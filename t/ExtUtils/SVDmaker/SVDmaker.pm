@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.01';
-$DATE = '2003/07/08';
+$VERSION = '0.05';
+$DATE = '2004/05/11';
 $FILE = __FILE__;
 
 ########
@@ -40,7 +40,7 @@ $FILE = __FILE__;
 
  Version: 
 
- Date: 2003/07/07
+ Date: 2004/05/11
 
  Prepared for: General Public 
 
@@ -80,7 +80,7 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
 
 =head2 Test Plan
 
- T: 18^
+ T: 20^
 
 =head2 ok: 1
 
@@ -90,14 +90,16 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
      use File::Glob ':glob';
      use File::Copy;
      use File::Path;
+     use File::Spec;
      use File::Package;
      use File::SmartNL;
      use Text::Scrub;
-     use IO::String;
      my $loaded = 0;
      my $snl = 'File::SmartNL';
      my $fp = 'File::Package';
      my $s = 'Text::Scrub';
+     my $w = 'File::Where';
+     my $fs = 'File::Spec';
  ^
   N: UUT not loaded^
   A: $fp->is_package_loaded('ExtUtils::SVDmaker')^
@@ -123,16 +125,22 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
      #
      unshift @INC, File::Spec->catdir( cwd(), 't');
      unshift @INC, File::Spec->catdir( cwd(), 'lib');
-     my $script_dir = cwd();
-     chdir 'lib';
-     unlink 'SVDtest1.pm','module1.pm';
-     copy 'SVDtest0.pm','SVDtest1.pm';
-     copy 'module0.pm','module1.pm';
-     chdir $script_dir;
-     chdir 't';
-     unlink 'SVDtest1.t';
-     copy 'SVDtest0.t','SVDtest1.t';
-     chdir $script_dir; 
+     rmtree( 't' );
+     rmtree( 'lib' );
+     mkpath( 't' );
+     mkpath( 'lib' );
+     mkpath( $fs->catfile( 't', 'Test' ));
+     mkpath( $fs->catfile( 't', 'Data' ));
+     mkpath( $fs->catfile( 't', 'File' ));
+     copy ($fs->catfile('expected','SVDtest0A.pm'),$fs->catfile('lib','SVDtest1.pm'));
+     copy ($fs->catfile('expected','module0A.pm'),$fs->catfile('lib','module1.pm'));
+     copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
+     copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
+     copy ($fs->catfile('expected','Test','Tech.pm'),$fs->catfile('t','Test','Tech.pm'));
+     copy ($fs->catfile('expected','Data','Startup.pm'),$fs->catfile('t','Data','Startup.pm'));
+     copy ($fs->catfile('expected','Data','Secs2.pm'),$fs->catfile('t','Data','Secs2.pm'));
+     copy ($fs->catfile('expected','Data','SecsPack.pm'),$fs->catfile('t','Data','SecsPack.pm'));
+     copy ($fs->catfile('expected','File','Package.pm'),$fs->catfile('t','File','Package.pm'));
      rmtree 'packages';
  ^
  DO: ^
@@ -151,70 +159,79 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
      open STDOUT,'> SVDtest1.log';
      open STDERR, ">&STDOUT";
      my $svd = new ExtUtils::SVDmaker( );
-     skip_tests(1) unless $svd->vmake( {pm => 'SVDtest1'} );
+     my  $success = $svd->vmake( {pm => 'SVDtest1'} );
      close STDOUT;
      close STDERR;
      open STDOUT, ">&SAVE_OUT";
      open STDERR, ">&SAVE_ERR";
      my $output = $snl->fin( 'SVDtest1.log' );
  ^
+ VO: ^
+  N: Vmake new^
+ DM: $output^
+  A: $success^
+ SE: 1^
+ ok: 3^
+
+=head2 ok: 4
+
  DO: ^
   A: $output^
   N: All tests successful^
   A: $output =~ /All tests successful/^
   E: 1^
- ok: 3^
-
-=head2 ok: 4
-
-  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
-  N: generated SVD POD^
-  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest2.pm' ) ) )^
  ok: 4^
 
 =head2 ok: 5
 
-  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
-  N: generated packages SVD POD^
-  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest2.pm' ) ) )^
+  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
+  N: generated SVD POD^
+  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest2.pm' ) ) )^
  ok: 5^
 
 =head2 ok: 6
 
-  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
-  N: generated MANIFEST^
-  E: $snl->fin( 'MANIFEST2' )^
+  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
+  N: generated packages SVD POD^
+  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest2.pm' ) ) )^
  ok: 6^
 
 =head2 ok: 7
 
-  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
-  N: generated Makefile.PL^
-  E: $snl->fin( 'Makefile2.PL' )^
+  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
+  N: generated MANIFEST^
+  E: $snl->fin( File::Spec->catfile( 'expected','MANIFEST2' ) )^
  ok: 7^
 
 =head2 ok: 8
 
-  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
-  N: generated README^
-  E: $s->scrub_date($snl->fin( 'README2' ))^
+  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
+  N: generated Makefile.PL^
+  E: $snl->fin( File::Spec->catfile('expected', 'Makefile2.PL') )^
  ok: 8^
 
 =head2 ok: 9
 
-  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) ))^
-  N: generated ppd^
-  E: $s->scrub_date($snl->fin( 'SVDtest2.ppd' ))^
+  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
+  N: generated README^
+  E: $s->scrub_date($snl->fin( File::Spec->catfile('expected','README2') ))^
  ok: 9^
 
 =head2 ok: 10
 
-  A: -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' )^
-  N: generated distribution^
-  E: 1^
+  A: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) )))^
+  N: generated ppd^
+  E: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile('expected','SVDtest2.ppd') )))^
  ok: 10^
 
 =head2 ok: 11
+
+  A: -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' )^
+  N: generated distribution^
+  E: 1^
+ ok: 11^
+
+=head2 ok: 12
 
 
   C:
@@ -222,13 +239,12 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
      #######
      # Freeze version based on previous version
      #
-     rmtree (File::Spec->catdir( 'packages', 'SVDtest1-0.01'));
-     my $contents = $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' )); 
-     $contents =~ s/PREVIOUS_RELEASE\s*:\s+\^^/PREVIOUS_RELEASE  : 0.01^^/;
-     $contents =~ s/FREEZE\s*:\s+.*?\^^/FREEZE  : 1^^/;
-     $contents =~ s/VERSION\s*:\s+.*?\^^/VERSION  : 0.02^^/;
-     $snl->fout( File::Spec->catfile( 'lib', 'SVDtest1.pm' ), $contents );
-  
+     unlink File::Spec->catfile('t','SVDtest1.t');
+     unlink File::Spec->catfile('lib','SVDtest1.pm'),File::Spec->catfile('lib', 'module1.pm');
+     copy (File::Spec->catfile('expected','SVDtest0B.pm'),File::Spec->catfile('lib','SVDtest1.pm'));
+     copy (File::Spec->catfile('expected','module0B.pm'),File::Spec->catfile('lib','module1.pm'));
+     copy (File::Spec->catfile('expected','SVDtest0B.t'),File::Spec->catfile('t','SVDtest1.t'));
+     rmtree (File::Spec->catdir( 'packages', 'SVDtest1-0.01')); 
      unlink 'SVDtest1.log';
      no warnings;
      open SAVE_OUT, ">&STDOUT";
@@ -237,68 +253,77 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
      open STDOUT,'> SVDtest1.log';
      open STDERR, ">&STDOUT";
      $svd = new ExtUtils::SVDmaker( );
-     skip_tests(1) unless $svd->vmake( {pm => 'SVDtest1'} );
+     $success = $svd->vmake( {pm => 'SVDtest1'} );
      close STDOUT;
      close STDERR;
      open STDOUT, ">&SAVE_OUT";
      open STDERR, ">&SAVE_ERR";
      $output = $snl->fin( 'SVDtest1.log' );
  ^
+ VO: ^
+  N: Vmake revised 0.01^
+ DM: $output^
+  A: $success^
+ SE: 1^
+ ok: 12^
+
+=head2 ok: 13
+
  DO: ^
   A: $output^
   N: All tests successful^
   A: $output =~ /All tests successful/^
   E: 1^
- ok: 11^
-
-=head2 ok: 12
-
-  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
-  N: generated SVD POD^
-  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest3.pm' ) ) )^
- ok: 12^
-
-=head2 ok: 13
-
-  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
-  N: generated packages SVD POD^
-  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest3.pm' ) ) )^
  ok: 13^
 
 =head2 ok: 14
 
-  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
-  N: generated MANIFEST^
-  E: $snl->fin( 'MANIFEST2' )^
+  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
+  N: generated SVD POD^
+  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
  ok: 14^
 
 =head2 ok: 15
 
-  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
-  N: generated Makefile.PL^
-  E: $snl->fin( 'Makefile3.PL' )^
+  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
+  N: generated packages SVD POD^
+  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
  ok: 15^
 
 =head2 ok: 16
 
-  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
-  N: generated README^
-  E: $s->scrub_date($snl->fin( 'README3' ))^
+  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
+  N: generated MANIFEST^
+  E: $snl->fin( File::Spec->catfile( 'expected', 'MANIFEST2') )^
  ok: 16^
 
 =head2 ok: 17
 
-  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) ))^
-  N: generated ppd^
-  E: $s->scrub_date($snl->fin( 'SVDtest3.ppd' ))^
+  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
+  N: generated Makefile.PL^
+  E: $snl->fin( File::Spec->catfile( 'expected', 'Makefile3.PL') )^
  ok: 17^
 
 =head2 ok: 18
 
+  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
+  N: generated README^
+  E: $s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'README3') ))^
+ ok: 18^
+
+=head2 ok: 19
+
+  A: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) )))^
+  N: generated ppd^
+  E: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.ppd') )))^
+ ok: 19^
+
+=head2 ok: 20
+
   A: -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' )^
   N: generated distribution^
   E: 1^
- ok: 18^
+ ok: 20^
 
 
 
@@ -407,20 +432,7 @@ Plain Old Documentation (POD)s
 =back
 
 =for html
-<hr>
-<p><br>
-<!-- BLK ID="NOTICE" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="OPT-IN" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="EMAIL" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="LOG_CGI" -->
-<!-- /BLK -->
-<p><br>
+
 
 =cut
 
@@ -440,7 +452,7 @@ Demo: SVDmaker.d^
 Verify: SVDmaker.t^
 
 
- T: 18^
+ T: 20^
 
 
  C:
@@ -448,15 +460,18 @@ Verify: SVDmaker.t^
     use File::Glob ':glob';
     use File::Copy;
     use File::Path;
+    use File::Spec;
+
     use File::Package;
     use File::SmartNL;
     use Text::Scrub;
-    use IO::String;
 
     my $loaded = 0;
     my $snl = 'File::SmartNL';
     my $fp = 'File::Package';
     my $s = 'Text::Scrub';
+    my $w = 'File::Where';
+    my $fs = 'File::Spec';
 ^
 
  N: UUT not loaded^
@@ -479,16 +494,24 @@ ok: 2^
     #
     unshift @INC, File::Spec->catdir( cwd(), 't');
     unshift @INC, File::Spec->catdir( cwd(), 'lib');
-    my $script_dir = cwd();
-    chdir 'lib';
-    unlink 'SVDtest1.pm','module1.pm';
-    copy 'SVDtest0.pm','SVDtest1.pm';
-    copy 'module0.pm','module1.pm';
-    chdir $script_dir;
-    chdir 't';
-    unlink 'SVDtest1.t';
-    copy 'SVDtest0.t','SVDtest1.t';
-    chdir $script_dir; 
+    rmtree( 't' );
+    rmtree( 'lib' );
+    mkpath( 't' );
+    mkpath( 'lib' );
+    mkpath( $fs->catfile( 't', 'Test' ));
+    mkpath( $fs->catfile( 't', 'Data' ));
+    mkpath( $fs->catfile( 't', 'File' ));
+
+    copy ($fs->catfile('expected','SVDtest0A.pm'),$fs->catfile('lib','SVDtest1.pm'));
+    copy ($fs->catfile('expected','module0A.pm'),$fs->catfile('lib','module1.pm'));
+    copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
+    copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
+    copy ($fs->catfile('expected','Test','Tech.pm'),$fs->catfile('t','Test','Tech.pm'));
+    copy ($fs->catfile('expected','Data','Startup.pm'),$fs->catfile('t','Data','Startup.pm'));
+    copy ($fs->catfile('expected','Data','Secs2.pm'),$fs->catfile('t','Data','Secs2.pm'));
+    copy ($fs->catfile('expected','Data','SecsPack.pm'),$fs->catfile('t','Data','SecsPack.pm'));
+    copy ($fs->catfile('expected','File','Package.pm'),$fs->catfile('t','File','Package.pm'));
+
     rmtree 'packages';
 ^
 
@@ -508,7 +531,7 @@ DO: ^
     open STDOUT,'> SVDtest1.log';
     open STDERR, ">&STDOUT";
     my $svd = new ExtUtils::SVDmaker( );
-    skip_tests(1) unless $svd->vmake( {pm => 'SVDtest1'} );
+    my  $success = $svd->vmake( {pm => 'SVDtest1'} );
     close STDOUT;
     close STDERR;
     open STDOUT, ">&SAVE_OUT";
@@ -516,47 +539,54 @@ DO: ^
     my $output = $snl->fin( 'SVDtest1.log' );
 ^
 
+VO: ^
+ N: Vmake new^
+DM: $output^
+ A: $success^
+SE: 1^
+ok: 3^
+
 DO: ^
  A: $output^
  N: All tests successful^
  A: $output =~ /All tests successful/^
  E: 1^
-ok: 3^
+ok: 4^
 
  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
  N: generated SVD POD^
- E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest2.pm' ) ) )^
-ok: 4^
+ E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest2.pm' ) ) )^
+ok: 5^
 
  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
  N: generated packages SVD POD^
- E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest2.pm' ) ) )^
-ok: 5^
+ E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest2.pm' ) ) )^
+ok: 6^
 
  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
  N: generated MANIFEST^
- E: $snl->fin( 'MANIFEST2' )^
-ok: 6^
+ E: $snl->fin( File::Spec->catfile( 'expected','MANIFEST2' ) )^
+ok: 7^
 
  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
  N: generated Makefile.PL^
- E: $snl->fin( 'Makefile2.PL' )^
-ok: 7^
+ E: $snl->fin( File::Spec->catfile('expected', 'Makefile2.PL') )^
+ok: 8^
 
  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
  N: generated README^
- E: $s->scrub_date($snl->fin( 'README2' ))^
-ok: 8^
-
- A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) ))^
- N: generated ppd^
- E: $s->scrub_date($snl->fin( 'SVDtest2.ppd' ))^
+ E: $s->scrub_date($snl->fin( File::Spec->catfile('expected','README2') ))^
 ok: 9^
+
+ A: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) )))^
+ N: generated ppd^
+ E: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile('expected','SVDtest2.ppd') )))^
+ok: 10^
 
  A: -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' )^
  N: generated distribution^
  E: 1^
-ok: 10^
+ok: 11^
 
 
  C:
@@ -565,13 +595,13 @@ ok: 10^
     #######
     # Freeze version based on previous version
     #
-    rmtree (File::Spec->catdir( 'packages', 'SVDtest1-0.01'));
-    my $contents = $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' )); 
-    $contents =~ s/PREVIOUS_RELEASE\s*:\s+\^^/PREVIOUS_RELEASE  : 0.01^^/;
-    $contents =~ s/FREEZE\s*:\s+.*?\^^/FREEZE  : 1^^/;
-    $contents =~ s/VERSION\s*:\s+.*?\^^/VERSION  : 0.02^^/;
-    $snl->fout( File::Spec->catfile( 'lib', 'SVDtest1.pm' ), $contents );
- 
+    unlink File::Spec->catfile('t','SVDtest1.t');
+    unlink File::Spec->catfile('lib','SVDtest1.pm'),File::Spec->catfile('lib', 'module1.pm');
+    copy (File::Spec->catfile('expected','SVDtest0B.pm'),File::Spec->catfile('lib','SVDtest1.pm'));
+    copy (File::Spec->catfile('expected','module0B.pm'),File::Spec->catfile('lib','module1.pm'));
+    copy (File::Spec->catfile('expected','SVDtest0B.t'),File::Spec->catfile('t','SVDtest1.t'));
+
+    rmtree (File::Spec->catdir( 'packages', 'SVDtest1-0.01')); 
 
     unlink 'SVDtest1.log';
     no warnings;
@@ -581,7 +611,7 @@ ok: 10^
     open STDOUT,'> SVDtest1.log';
     open STDERR, ">&STDOUT";
     $svd = new ExtUtils::SVDmaker( );
-    skip_tests(1) unless $svd->vmake( {pm => 'SVDtest1'} );
+    $success = $svd->vmake( {pm => 'SVDtest1'} );
     close STDOUT;
     close STDERR;
     open STDOUT, ">&SAVE_OUT";
@@ -589,61 +619,64 @@ ok: 10^
     $output = $snl->fin( 'SVDtest1.log' );
 ^
 
+VO: ^
+ N: Vmake revised 0.01^
+DM: $output^
+ A: $success^
+SE: 1^
+ok: 12^
+
 DO: ^
  A: $output^
  N: All tests successful^
  A: $output =~ /All tests successful/^
  E: 1^
-ok: 11^
+ok: 13^
 
  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
  N: generated SVD POD^
- E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest3.pm' ) ) )^
-ok: 12^
+ E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
+ok: 14^
 
  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
  N: generated packages SVD POD^
- E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'SVDtest3.pm' ) ) )^
-ok: 13^
+ E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
+ok: 15^
 
  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
  N: generated MANIFEST^
- E: $snl->fin( 'MANIFEST2' )^
-ok: 14^
+ E: $snl->fin( File::Spec->catfile( 'expected', 'MANIFEST2') )^
+ok: 16^
 
  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
  N: generated Makefile.PL^
- E: $snl->fin( 'Makefile3.PL' )^
-ok: 15^
+ E: $snl->fin( File::Spec->catfile( 'expected', 'Makefile3.PL') )^
+ok: 17^
 
  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
  N: generated README^
- E: $s->scrub_date($snl->fin( 'README3' ))^
-ok: 16^
+ E: $s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'README3') ))^
+ok: 18^
 
- A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) ))^
+ A: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) )))^
  N: generated ppd^
- E: $s->scrub_date($snl->fin( 'SVDtest3.ppd' ))^
-ok: 17^
+ E: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.ppd') )))^
+ok: 19^
 
  A: -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' )^
  N: generated distribution^
  E: 1^
-ok: 18^
+ok: 20^
 
 
  C:
-  #####
-  # Clean up
-  #
-  chdir 'lib';
-  unlink 'SVDTest1.pm','module1.pm';
-  chdir $script_dir;
-  chdir 't';
-  unlink 'SVDtest1.t';
-  chdir $script_dir;
-  unlink 'SVDtest1.log';
-  rmtree 'packages';
+    #####
+    # Clean up
+    #
+    unlink 'SVDtest1.log';
+    unlink File::Spec->catfile('lib','SVDtest1.pm'),File::Spec->catfile('lib', 'module1.pm');
+    rmtree 'packages';
+    rmtree 't';
 ^
 
 
@@ -718,24 +751,7 @@ ADVISED OF NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
 ^
 
-
-HTML:
-<hr>
-<p><br>
-<!-- BLK ID="NOTICE" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="OPT-IN" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="EMAIL" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="LOG_CGI" -->
-<!-- /BLK -->
-<p><br>
-^
-
+HTML: ^
 
 
 ~-~

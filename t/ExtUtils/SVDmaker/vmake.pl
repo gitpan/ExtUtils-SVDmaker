@@ -12,8 +12,8 @@ use ExtUtils::SVDmaker;
 use Pod::Usage;
 
 use vars qw($VERSION $DATE);
-$VERSION = '1.02';
-$DATE = '2003/07/08';
+$VERSION = '1.04';
+$DATE = '2004/05/11';
 
 use vars qw($man $help);
 $man = '0';
@@ -31,49 +31,6 @@ unless ( GetOptions(
             #
             'verbose!' => \$options{verbose},
             'pm=s' => \$options{pm},
-
-             ######
-             # GNU make options
-             #
-             'b|m!' => \$options{b},
-             'C|directory=s' => \$options{'C=s'},
-             'debug!' => \$options{debug},
-             'environment-overrides!' => \$options{e},
-             'ignore-errors!'=> \$options{i},
-             'I|include-dir=s' => \$options{'I=s'},
-             'jobs=i' => \$options{j},
-             'keep-going!' => \$options{k},
-             'load-average=i' => \$options{l},
-             'n|just-print|dry-run|recon!' => \$options{n},
-             'old-file=s' => \$options{'o=s'},
-             'print-data-base!' => \$options{p},
-             'question!' => \$options{q},
-             'r|no-builtin-rulles!' => \$options{r},
-             'R|no-builtin-variables!' => \$options{R},
-             'silent|quiet!' => \$options{s},
-             'touch!' => \$options{t},
-             'version!' => \$options{v},
-             'w|print-directory!' => \$options{w},
-             'no-print-directory!' => \$options{'no-print-directory'},
-             'W|what-if=s' => \$options{'W=s'},
-             'warn-undefined-variables!' => \$options{'warn-undefined-variables'},
-
-             ######
-             # additional nmake options
-             #
-             'A!' => \$options{A},
-             'B!' => \$options{B},
-             'D!' => \$options{D},
-             'E!' => \$options{E},
-             'HELP!' => \$options{HELP},
-             'K!' => \$options{K},
-             'NOLOGO!' => \$options{NOLOGO},
-             'P!' => \$options{P},
-             'Q!' => \$options{Q},
-             'S!' => \$options{S},
-             'T!' => \$options{T},
-             'U!' => \$options{U},
-             'Y!' => \$options{Y},
 
            ) ) {
    pod2usage(1);

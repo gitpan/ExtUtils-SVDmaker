@@ -8,7 +8,7 @@ use warnings::register;
 
 use vars qw($VERSION $DATE);
 $VERSION = '0.01';
-$DATE = '2003/07/08';
+$DATE = '2003/08/04';
 
 
 ######
@@ -18,44 +18,62 @@ $DATE = '2003/07/08';
 # use a BEGIN block so we print our plan before Module Under Test is loaded
 #
 BEGIN { 
-   use Cwd;
+   use FindBin;
    use File::Spec;
-   use Test::Tech qw(plan ok skip skip_tests);
-   use File::Package;
-   use File::TestPath;
-
-   use vars qw($__restore_dir__ @__restore_inc__ $__tests__);
+   use Cwd;
 
    ########
-   # Create the test plan by supplying the number of tests
-   # and the todo tests
+   # The working directory for this script file is the directory where
+   # the test script resides. Thus, any relative files written or read
+   # by this test script are located relative to this test script.
    #
-   $__tests__ = 3;
-   plan(tests => $__tests__);
-
-   ########
-   # Working directory is that of the script file
-   #
+   use vars qw( $__restore_dir__ );
    $__restore_dir__ = cwd();
-   my ($vol, $dirs, undef) = File::Spec->splitpath( $0 );
+   my ($vol, $dirs) = File::Spec->splitpath($FindBin::Bin,'nofile');
    chdir $vol if $vol;
    chdir $dirs if $dirs;
 
    #######
-   # Add the library of the unit under test (UUT) to @INC
+   # Pick up any testing program modules off this test script.
    #
-   @__restore_inc__ = File::TestPath->test_lib2inc;
+   # When testing on a target site before installation, place any test
+   # program modules that should not be installed in the same directory
+   # as this test script. Likewise, when testing on a host with a @INC
+   # restricted to just raw Perl distribution, place any test program
+   # modules in the same directory as this test script.
+   #
+   use lib $FindBin::Bin;
+
+   ########
+   # Using Test::Tech, a very light layer over the module "Test" to
+   # conduct the tests.  The big feature of the "Test::Tech: module
+   # is that it takes expected and actual references and stringify
+   # them by using "Data::Secs2" before passing them to the "&Test::ok"
+   # Thus, almost any time of Perl data structures may be
+   # compared by passing a reference to them to Test::Tech::ok
+   #
+   # Create the test plan by supplying the number of tests
+   # and the todo tests
+   #
+   require Test::Tech;
+   Test::Tech->import( qw(finish is_skip ok plan skip skip_tests tech_config) );
+
+   plan(tests => 3);
+
+
 
 }
 
 END {
 
-    #########
-    # Restore working directory and @INC back to when enter script
-    #
-    @INC = @__restore_inc__;
-    chdir $__restore_dir__;
+   #########
+   # Restore working directory and @INC back to when enter script
+   #
+   @INC = @lib::ORIG_INC;
+   chdir $__restore_dir__;
+
 }
+
 
 
 #######

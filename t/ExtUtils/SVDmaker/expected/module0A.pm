@@ -11,7 +11,7 @@ use warnings::register;
 
 use vars qw($VERSION $DATE $FILE);
 $VERSION = '0.01';
-$DATE = '2003/07/08';
+$DATE = '2003/08/04';
 $FILE = __FILE__;
 
 ####

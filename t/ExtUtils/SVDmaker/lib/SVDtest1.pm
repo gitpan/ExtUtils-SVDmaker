@@ -11,18 +11,23 @@ use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
 $VERSION = '0.02';
-$DATE = '2003/07/08';
+$DATE = '2004/05/11';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/SVDtest1.pm' => [qw(0.02 2003/07/08), 'revised 0.01'],
-    'MANIFEST' => [qw(0.02 2003/07/08), 'generated, replaces 0.01'],
-    'Makefile.PL' => [qw(0.02 2003/07/08), 'generated, replaces 0.01'],
-    'README' => [qw(0.02 2003/07/08), 'generated, replaces 0.01'],
-    'lib/SVDtest1.pm' => [qw(0.02 2003/07/08), 'revised 0.01'],
-    'lib/module1.pm' => [qw(0.01 2003/07/08), 'unchanged'],
-    't/SVDtest1.t' => [qw(0.01 2003/07/08), 'unchanged'],
+    'lib/SVDtest1.pm' => [qw(0.02 2004/05/11), 'revised 0.01'],
+    'MANIFEST' => [qw(0.02 2004/05/11), 'generated, replaces 0.01'],
+    'Makefile.PL' => [qw(0.02 2004/05/11), 'generated, replaces 0.01'],
+    'README' => [qw(0.02 2004/05/11), 'generated, replaces 0.01'],
+    'lib/SVDtest1.pm' => [qw(0.02 2004/05/11), 'revised 0.01'],
+    'lib/module1.pm' => [qw(0.02 2004/05/11), 'unchanged'],
+    't/SVDtest1.t' => [qw(0.02 2004/05/11), 'revised 0.01'],
+    't/Test/Tech.pm' => [qw(1.24 2004/05/11), 'unchanged'],
+    't/Data/Startup.pm' => [qw(0.06 2004/05/11), 'unchanged'],
+    't/Data/Secs2.pm' => [qw(1.22 2004/05/11), 'unchanged'],
+    't/Data/SecsPack.pm' => [qw(0.07 2004/05/11), 'unchanged'],
+    't/File/Package.pm' => [qw(1.17 2004/05/11), 'unchanged'],
 
 );
 
@@ -41,6 +46,10 @@ use vars qw(%INVENTORY);
 
 
 
+=head1 NAME
+
+ ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+
 =head1 Title Page
 
  Software Version Description
@@ -53,7 +62,7 @@ use vars qw(%INVENTORY);
 
  Version: 0.02
 
- Date: 2003/07/08
+ Date: 2004/05/11
 
  Prepared for: General Public 
 
@@ -94,12 +103,14 @@ system file specification.
 
 =head2 3.1 Inventory of materials released.
 
-This document releases the file found
-at the following repository(s):
+This document releases the file 
 
-   http://www.softwarediamonds/packages/SVDtest1-0.02
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/SVDtest1-0.02
+ SVDtest1-0.02.tar.gz
 
+found at the following repository(s):
+
+  http://www.softwarediamonds/packages/
+  http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/
 
 Restrictions regarding duplication and license provisions
 are as follows:
@@ -166,13 +177,18 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/SVDtest1.pm                                              0.02    2003/07/08 revised 0.01
- MANIFEST                                                     0.02    2003/07/08 generated, replaces 0.01
- Makefile.PL                                                  0.02    2003/07/08 generated, replaces 0.01
- README                                                       0.02    2003/07/08 generated, replaces 0.01
- lib/SVDtest1.pm                                              0.02    2003/07/08 revised 0.01
- lib/module1.pm                                               0.01    2003/07/08 unchanged
- t/SVDtest1.t                                                 0.01    2003/07/08 unchanged
+ lib/SVDtest1.pm                                              0.02    2004/05/11 revised 0.01
+ MANIFEST                                                     0.02    2004/05/11 generated, replaces 0.01
+ Makefile.PL                                                  0.02    2004/05/11 generated, replaces 0.01
+ README                                                       0.02    2004/05/11 generated, replaces 0.01
+ lib/SVDtest1.pm                                              0.02    2004/05/11 revised 0.01
+ lib/module1.pm                                               0.02    2004/05/11 unchanged
+ t/SVDtest1.t                                                 0.02    2004/05/11 revised 0.01
+ t/Test/Tech.pm                                               1.24    2004/05/11 unchanged
+ t/Data/Startup.pm                                            0.06    2004/05/11 unchanged
+ t/Data/Secs2.pm                                              1.22    2004/05/11 unchanged
+ t/Data/SecsPack.pm                                           0.07    2004/05/11 unchanged
+ t/File/Package.pm                                            1.17    2004/05/11 unchanged
 
 
 =head2 3.3 Changes
@@ -183,15 +199,6 @@ This is the original release. There are no preivious releases to change.
 
 This installation requires that the installation site
 has the Perl programming language installed.
-Installation sites running Microsoft Operating systems require
-the installation of Unix utilities. 
-An excellent, highly recommended Unix utilities for Microsoft
-operating systems is unxutils by Karl M. Syring.
-A copy is available at the following web sites:
-
- http://unxutils.sourceforge.net
- http://packages.SoftwareDiamnds.com
-
 There are no other additional requirements or tailoring needed of 
 configurations files, adaptation data or other software needed for this
 installation particular to any installation site.
@@ -219,9 +226,8 @@ Follow the instructions for the the chosen installation software.
 
 The distribution file is at the following respositories:
 
-   http://www.softwarediamonds/packages/SVDtest1-0.02
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/SVDtest1-0.02
-
+  http://www.softwarediamonds/packages/
+  http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/
 
 =item Prerequistes.
 
@@ -319,12 +325,12 @@ Software Version Description
 __DATA__
 
 DISTNAME: SVDtest1^
-VERSION  : 0.02^
+VERSION: 0.02^ 
 REPOSITORY_DIR: packages^
-FREEZE  : 1^
+FREEZE: 1^
 
-PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE  : 0.01^
+PREVIOUS_DISTNAME: ^
+PREVIOUS_RELEASE: 0.01^
 REVISION: -^
 AUTHOR  : SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>^
 
@@ -358,6 +364,11 @@ AUTO_REVISE:
 lib/SVDtest1.pm
 lib/module1.pm
 t/SVDtest1.t
+t/Test/Tech.pm
+t/Data/Startup.pm
+t/Data/Secs2.pm
+t/Data/SecsPack.pm
+t/File/Package.pm
 ^
 
 PREREQ_PM: 'File::Basename' => 0^
@@ -502,5 +513,7 @@ HTML:
 <p><br>
 ^
 ~-~
+
+
 
 

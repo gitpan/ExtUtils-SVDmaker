@@ -18,37 +18,32 @@
 use ExtUtils::MakeMaker;
 
 my $tests = join ' ',unix2os('t/ExtUtils/SVDmaker/SVDmaker.t');
-my @exe = unix2os('bin/vmake.pl');
+
 
 WriteMakefile(
     NAME => 'ExtUtils::SVDmaker',
     DISTNAME => 'ExtUtils-SVDmaker',
-    VERSION  => '0.01',
+    VERSION  => '0.05',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},
-    PREREQ_PM => {'DataPort::DataFile' => '0.02',
-                  'DataPort::FileType::FormDB' => '0.02',
-                  'DataPort::Maker' => '0',
-                  'Test::Tech' => '1.08',
-                  'Text::Scrub' => '0',
-                  'IO::String' => '0',
-                  'Text::Scrub' => '0',
+    PREREQ_PM => {'Archive::TarGzip' => '0',
+                  'File::AnySpec' => '1.13',
+                  'File::Maker' => '0.03',
+                  'File::Package' => '1.16',
+                  'File::SmartNL' => '1.14',
+                  'File::Where' => '0',
                   'Text::Replace' => '0',
                   'Text::Column' => '0',
-                  'File::AnySpec' => '0',
-                  'File::TestPath' => '0',
-                  'File::SubPM' => '0',
-                  'File::PM2File' => '0',
-                  'File::SmartNL' => '0',
-                  'File::Package' => '0',
-                  'File::Data' => '0',},
-    EXE_FILES => \@exe,
+                  'Text::Scrub' => '1.13',
+                  'Tie::Form' => '0.01',
+                  'Tie::Layers' => '0.04',},
+    
 
     ($] >= 5.005 ?     
-        (AUTHOR    => 'SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>',
-        ABSTRACT  => 'Software to generate Software Version Description (SVD) program modules and 
-package modules for CPAN.', ) : ()),
+        (AUTHOR    => 'SoftwareDiamonds.com E<lt> support@SoftwareDiamonds.com E<gt>',
+        ABSTRACT  => 'Generate Software Version Description (SVD) program modules and 
+distribution files for CPAN.', ) : ()),
 );
 
 

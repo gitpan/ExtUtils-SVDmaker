@@ -11,7 +11,7 @@ use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
 $VERSION = '0.01';
-$DATE = '2003/07/08';
+$DATE = '2003/08/04';
 $FILE = __FILE__;
 
 1
@@ -19,7 +19,7 @@ $FILE = __FILE__;
 __DATA__
 
 DISTNAME: SVDtest1^
-VERSION : 0.01^
+VERSION: 0.01^ 
 REPOSITORY_DIR: packages^
 FREEZE: 0^
 
@@ -58,6 +58,11 @@ AUTO_REVISE:
 lib/SVDtest1.pm
 lib/module1.pm
 t/SVDtest1.t
+t/Test/Tech.pm
+t/Data/Startup.pm
+t/Data/Secs2.pm
+t/Data/SecsPack.pm
+t/File/Package.pm
 ^
 
 PREREQ_PM: 'File::Basename' => 0^

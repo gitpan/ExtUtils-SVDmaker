@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE);
-$VERSION = '1.09';
-$DATE = '2004/05/22';
+$VERSION = '1.1';
+$DATE = '2004/05/24';
 
 ######
 # Distribution Program Modules
@@ -1603,7 +1603,7 @@ __END__
 
 =head1 NAME
 
-ExtUtil::SVDmaker - Automating creating CPAN distributions
+ExtUtils::SVDmaker - Create CPAN distributions
 
 =head1 SYNOPSIS
 
@@ -2562,7 +2562,7 @@ follow on the next lines as comments. For example,
  #__DATA__
 
  #DISTNAME: SVDtest1^
- #VERSION:1.09^     
+ #VERSION:1.1^      
  #REPOSITORY_DIR: packages^
  #FREEZE: 0^
 

@@ -10,26 +10,26 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.07';
-$DATE = '2004/05/22';
+$VERSION = '0.08';
+$DATE = '2004/05/24';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm' => [qw(0.07 2004/05/22), 'revised 0.06'],
-    'MANIFEST' => [qw(0.07 2004/05/22), 'generated, replaces 0.06'],
-    'Makefile.PL' => [qw(0.07 2004/05/22), 'generated, replaces 0.06'],
-    'README' => [qw(0.07 2004/05/22), 'generated, replaces 0.06'],
-    'lib/ExtUtils/SVDmaker.pm' => [qw(1.09 2004/05/22), 'revised 1.08'],
+    'lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm' => [qw(0.08 2004/05/24), 'revised 0.07'],
+    'MANIFEST' => [qw(0.08 2004/05/24), 'generated, replaces 0.07'],
+    'Makefile.PL' => [qw(0.08 2004/05/24), 'generated, replaces 0.07'],
+    'README' => [qw(0.08 2004/05/24), 'generated, replaces 0.07'],
+    'lib/ExtUtils/SVDmaker.pm' => [qw(1.1 2004/05/24), 'revised 1.09'],
     't/ExtUtils/SVDmaker/SVDmaker.d' => [qw(0.01 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/SVDmaker.pm' => [qw(0.01 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/SVDmaker.t' => [qw(0.06 2004/05/13), 'unchanged'],
-    't/ExtUtils/SVDmaker/lib/SVDtest1.pm' => [qw(0.03 2004/05/22), 'revised 0.02'],
-    't/ExtUtils/SVDmaker/vmake.pl' => [qw(1.04 2004/05/22), 'unchanged'],
-    't/ExtUtils/SVDmaker/Test/Tech.pm' => [qw(1.26 2004/05/22), 'revised 1.25'],
-    't/ExtUtils/SVDmaker/Data/Secs2.pm' => [qw(1.26 2004/05/22), 'revised 1.23'],
-    't/ExtUtils/SVDmaker/Data/Str2Num.pm' => [qw(0.08 2004/05/22), 'new'],
-    't/ExtUtils/SVDmaker/Data/Startup.pm' => [qw(0.07 2004/05/22), 'revised 0.06'],
+    't/ExtUtils/SVDmaker/lib/SVDtest1.pm' => [qw(0.03 2004/05/24), 'revised 0.02'],
+    't/ExtUtils/SVDmaker/vmake.pl' => [qw(1.04 2004/05/24), 'unchanged'],
+    't/ExtUtils/SVDmaker/Test/Tech.pm' => [qw(1.26 2004/05/24), 'unchanged'],
+    't/ExtUtils/SVDmaker/Data/Secs2.pm' => [qw(1.26 2004/05/24), 'unchanged'],
+    't/ExtUtils/SVDmaker/Data/Str2Num.pm' => [qw(0.08 2004/05/24), 'unchanged'],
+    't/ExtUtils/SVDmaker/Data/Startup.pm' => [qw(0.07 2004/05/24), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile2.PL' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile3.PL' => [qw(0.03 2003/08/04), 'unchanged'],
@@ -78,7 +78,7 @@ use vars qw(%INVENTORY);
 
 =head1 NAME
 
-Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
+Docs::Site_SVD::ExtUtils_SVDmaker - Create CPAN distributions
 
 =head1 Title Page
 
@@ -86,13 +86,13 @@ Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
 
  for
 
- Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
+ Docs::Site_SVD::ExtUtils_SVDmaker - Create CPAN distributions
 
- Revision: F
+ Revision: G
 
- Version: 0.07
+ Version: 0.08
 
- Date: 2004/05/22
+ Date: 2004/05/24
 
  Prepared for: General Public 
 
@@ -188,7 +188,7 @@ a text database in the Data::Port::FileTYpe::FormDB format.
 
 =head2 1.3 Document overview.
 
-This document releases ExtUtils::SVDmaker version 0.07
+This document releases ExtUtils::SVDmaker version 0.08
 providing description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -203,7 +203,7 @@ system file specification.
 
 This document releases the file 
 
- ExtUtils-SVDmaker-0.07.tar.gz
+ ExtUtils-SVDmaker-0.08.tar.gz
 
 found at the following repository(s):
 
@@ -298,20 +298,20 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.07    2004/05/22 revised 0.06
- MANIFEST                                                     0.07    2004/05/22 generated, replaces 0.06
- Makefile.PL                                                  0.07    2004/05/22 generated, replaces 0.06
- README                                                       0.07    2004/05/22 generated, replaces 0.06
- lib/ExtUtils/SVDmaker.pm                                     1.09    2004/05/22 revised 1.08
+ lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.08    2004/05/24 revised 0.07
+ MANIFEST                                                     0.08    2004/05/24 generated, replaces 0.07
+ Makefile.PL                                                  0.08    2004/05/24 generated, replaces 0.07
+ README                                                       0.08    2004/05/24 generated, replaces 0.07
+ lib/ExtUtils/SVDmaker.pm                                     1.1     2004/05/24 revised 1.09
  t/ExtUtils/SVDmaker/SVDmaker.d                               0.01    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/SVDmaker.pm                              0.01    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/SVDmaker.t                               0.06    2004/05/13 unchanged
- t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/22 revised 0.02
- t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/22 unchanged
- t/ExtUtils/SVDmaker/Test/Tech.pm                             1.26    2004/05/22 revised 1.25
- t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.26    2004/05/22 revised 1.23
- t/ExtUtils/SVDmaker/Data/Str2Num.pm                          0.08    2004/05/22 new
- t/ExtUtils/SVDmaker/Data/Startup.pm                          0.07    2004/05/22 revised 0.06
+ t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/24 revised 0.02
+ t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/24 unchanged
+ t/ExtUtils/SVDmaker/Test/Tech.pm                             1.26    2004/05/24 unchanged
+ t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.26    2004/05/24 unchanged
+ t/ExtUtils/SVDmaker/Data/Str2Num.pm                          0.08    2004/05/24 unchanged
+ t/ExtUtils/SVDmaker/Data/Startup.pm                          0.07    2004/05/24 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile                        0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile2.PL                    0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile3.PL                    0.03    2003/08/04 unchanged
@@ -421,6 +421,10 @@ Verbatim NAME section from template. Replaced.
 Escape the SVD template POD '=' commands so that they do not confuse
 the CPAN to which is the real POD.
 
+=item ExtUtils::SVDmaker-0.08
+
+Fixed typo in the NAME section.
+
 =back
 
 =head2 3.4 Adaptation data.
@@ -459,13 +463,13 @@ Enter one of the following repositories in a web browser:
   http://www.softwarediamonds/packages/
   http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-Right click on 'ExtUtils-SVDmaker-0.07.tar.gz' and download to a temporary
+Right click on 'ExtUtils-SVDmaker-0.08.tar.gz' and download to a temporary
 installation directory.
 Enter the following where $make is 'nmake' for microsoft
 windows; otherwise 'make'.
 
- gunzip ExtUtils-SVDmaker-0.07.tar.gz
- tar -xf ExtUtils-SVDmaker-0.07.tar
+ gunzip ExtUtils-SVDmaker-0.08.tar.gz
+ tar -xf ExtUtils-SVDmaker-0.08.tar
  perl Makefile.PL
  $make test
  $make install
@@ -624,11 +628,12 @@ United States
 __DATA__
 
 DISTNAME: ExtUtils-SVDmaker^
-VERSION : 0.07^
+
+VERSION : 0.08^
 FREEZE: 1^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.06^
-REVISION: F^
+PREVIOUS_RELEASE: 0.07^
+REVISION: G^
 
 AUTHOR  : SoftwareDiamonds.com E<lt> support@SoftwareDiamonds.com E<gt>^
 ABSTRACT: 
@@ -636,7 +641,7 @@ Generate Software Version Description (SVD) program modules and
 distribution files for CPAN.
 ^
 
-TITLE: Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions^
+TITLE: Docs::Site_SVD::ExtUtils_SVDmaker - Create CPAN distributions^
 END_USER: General Public^
 COPYRIGHT: copyright 2003 Software Diamonds^
 CLASSIFICATION: NONE^
@@ -771,6 +776,10 @@ Verbatim NAME section from template. Replaced.
 
 Escape the SVD template POD '=' commands so that they do not confuse
 the CPAN to which is the real POD.
+
+\=item ExtUtils::SVDmaker-0.08
+
+Fixed typo in the NAME section.
 
 \=back
 ^
@@ -1069,6 +1078,8 @@ HTML:
 ^
 
 ~-~
+
+
 
 
 

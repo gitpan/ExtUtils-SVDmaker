@@ -11,23 +11,23 @@ use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
 $VERSION = '0.02';
-$DATE = '2004/05/22';
+$DATE = '2004/05/24';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/SVDtest1.pm' => [qw(0.02 2004/05/22), 'revised 0.01'],
-    'MANIFEST' => [qw(0.02 2004/05/22), 'generated, replaces 0.01'],
-    'Makefile.PL' => [qw(0.02 2004/05/22), 'generated, replaces 0.01'],
-    'README' => [qw(0.02 2004/05/22), 'generated, replaces 0.01'],
-    'lib/SVDtest1.pm' => [qw(0.02 2004/05/22), 'revised 0.01'],
-    'lib/module1.pm' => [qw(0.02 2004/05/22), 'unchanged'],
-    't/SVDtest1.t' => [qw(0.02 2004/05/22), 'revised 0.01'],
-    't/Test/Tech.pm' => [qw(1.24 2004/05/22), 'unchanged'],
-    't/Data/Startup.pm' => [qw(0.06 2004/05/22), 'unchanged'],
-    't/Data/Secs2.pm' => [qw(1.22 2004/05/22), 'unchanged'],
-    't/Data/SecsPack.pm' => [qw(0.07 2004/05/22), 'unchanged'],
-    't/File/Package.pm' => [qw(1.17 2004/05/22), 'unchanged'],
+    'lib/SVDtest1.pm' => [qw(0.02 2004/05/24), 'revised 0.01'],
+    'MANIFEST' => [qw(0.02 2004/05/24), 'generated, replaces 0.01'],
+    'Makefile.PL' => [qw(0.02 2004/05/24), 'generated, replaces 0.01'],
+    'README' => [qw(0.02 2004/05/24), 'generated, replaces 0.01'],
+    'lib/SVDtest1.pm' => [qw(0.02 2004/05/24), 'revised 0.01'],
+    'lib/module1.pm' => [qw(0.02 2004/05/24), 'unchanged'],
+    't/SVDtest1.t' => [qw(0.02 2004/05/24), 'revised 0.01'],
+    't/Test/Tech.pm' => [qw(1.24 2004/05/24), 'unchanged'],
+    't/Data/Startup.pm' => [qw(0.06 2004/05/24), 'unchanged'],
+    't/Data/Secs2.pm' => [qw(1.22 2004/05/24), 'unchanged'],
+    't/Data/SecsPack.pm' => [qw(0.07 2004/05/24), 'unchanged'],
+    't/File/Package.pm' => [qw(1.17 2004/05/24), 'unchanged'],
 
 );
 
@@ -62,7 +62,7 @@ ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
  Version: 0.02
 
- Date: 2004/05/22
+ Date: 2004/05/24
 
  Prepared for: General Public 
 
@@ -177,18 +177,18 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/SVDtest1.pm                                              0.02    2004/05/22 revised 0.01
- MANIFEST                                                     0.02    2004/05/22 generated, replaces 0.01
- Makefile.PL                                                  0.02    2004/05/22 generated, replaces 0.01
- README                                                       0.02    2004/05/22 generated, replaces 0.01
- lib/SVDtest1.pm                                              0.02    2004/05/22 revised 0.01
- lib/module1.pm                                               0.02    2004/05/22 unchanged
- t/SVDtest1.t                                                 0.02    2004/05/22 revised 0.01
- t/Test/Tech.pm                                               1.24    2004/05/22 unchanged
- t/Data/Startup.pm                                            0.06    2004/05/22 unchanged
- t/Data/Secs2.pm                                              1.22    2004/05/22 unchanged
- t/Data/SecsPack.pm                                           0.07    2004/05/22 unchanged
- t/File/Package.pm                                            1.17    2004/05/22 unchanged
+ lib/SVDtest1.pm                                              0.02    2004/05/24 revised 0.01
+ MANIFEST                                                     0.02    2004/05/24 generated, replaces 0.01
+ Makefile.PL                                                  0.02    2004/05/24 generated, replaces 0.01
+ README                                                       0.02    2004/05/24 generated, replaces 0.01
+ lib/SVDtest1.pm                                              0.02    2004/05/24 revised 0.01
+ lib/module1.pm                                               0.02    2004/05/24 unchanged
+ t/SVDtest1.t                                                 0.02    2004/05/24 revised 0.01
+ t/Test/Tech.pm                                               1.24    2004/05/24 unchanged
+ t/Data/Startup.pm                                            0.06    2004/05/24 unchanged
+ t/Data/Secs2.pm                                              1.22    2004/05/24 unchanged
+ t/Data/SecsPack.pm                                           0.07    2004/05/24 unchanged
+ t/File/Package.pm                                            1.17    2004/05/24 unchanged
 
 
 =head2 3.3 Changes

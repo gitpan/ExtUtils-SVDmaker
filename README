@@ -1,0 +1,651 @@
+Title Page
+     Software Version Description
+
+     for
+
+     ExtUtil::SVDmaker - Packaging modules for CPAN and Software Version Description (SVD) Automation
+
+     Revision: -
+
+     Version: 0.01
+
+     Date: 2003/07/08
+
+     Prepared for: General Public 
+
+     Prepared by:  SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>
+
+     Copyright: copyright © 2003 Software Diamonds
+
+     Classification: NONE
+
+1.0 SCOPE
+    This paragraph identifies and provides an overview of the released
+    files.
+
+  1.1 Identification
+
+    This release, identified in 3.2, is a collection of Perl modules that
+    extend the capabilities of the Perl language.
+
+  1.2 System overview
+
+    The system is the Perl programming language software. As established by
+    the Perl referenced documents, the "ExtUtils::SVDmaker" program module
+    extends the Perl language.
+
+    The input to "ExtUtils::SVDmaker" is the __DATA__ section of Software
+    Test Description (STD) program module. The __DATA__ section must contain
+    STD forms text database in the DataPort::FileType::DataDB format.
+
+    Use the "vmake.pl" (version make) cover script for Test::STDmaker to
+    process a SVD program module as follows:
+
+      vmake Docs::Site_SVD::MySVDmodule
+
+    The "ExtUtils::SVDmaker" module will then provide some automation of
+    releaseing a Perl distribution file as follows:
+
+    *   The input data for the ExtUtils::SVDmaker is a form database file in
+        the format of DataPort::FileType::FormDB. This is a efficient text
+        database that is very close in format to hard copy forms and may be
+        edited by text editors
+
+    *   compares the contents of the current release with the previous
+        release and automatically updates the version and date for files
+        that have changed
+
+    *   generates a SVD program module from the form database data.
+
+    *   generates MANIFEST, README and Makefile.PL distribution files from
+        the form database data
+
+    *   Builds the distribution *.tar.gz file
+
+    *   Runs the installation tests on the distribution files
+
+    The ExtUtils::SVDmaker module is one of the end user, functional
+    interface modules for the US DOD STD2167A bundle. Two STD2167A bundle
+    end user modules are as follows:
+
+    Test::STDmaker module
+        generates Test script, demo script and STD document POD from a text
+        database in the Data::Port::FileTYpe::FormDB format.
+
+    ExtUtils::SVDmaker module
+        generates SVD document POD and distribution *.tar.gz file including
+        a generated Makefile.PL README and MANIFEST file from a text
+        database in the Data::Port::FileTYpe::FormDB format.
+
+    The dependency of the program modules in the US DOD STD2167A bundle is
+    as follows:
+
+     File::TestPath File::Package File::SmartNL
+       Text::Scrub
+         Test::Tech
+
+            DataPort::FileType::FormDB DataPort::DataFile DataPort::Maker Text::Replace
+            Text::Column File::PM2File File::Data File::AnySpec File::SubPM
+
+                Test::STDmaker ExtUtils::SVDmaker
+
+    The top level modules that establish the functional interface of
+    interest to the end user are the Test::STDmaker and the
+    ExtUtils::SVDmaker modules. The rest of the modules in the above
+    dependency tree are design modules for the US DOD STD2167A bundle. They
+    are broken out as separate modules because they may be of use outside of
+    the US DOD STD2167A bundle.
+
+    Note the File::FileUtil, Test::STD::STDutil Test::STD::Scrub program
+    modules breaks up the Test::TestUtil program module and Test::TestUtil
+    has disappeared.
+
+  1.3 Document overview.
+
+    This document releases ExtUtils::SVDmaker version 0.01 providing
+    description of the inventory, installation instructions and other
+    information necessary to utilize and track this release.
+
+3.0 VERSION DESCRIPTION
+    All file specifications in this SVD use the Unix operating system file
+    specification.
+
+  3.1 Inventory of materials released.
+
+    This document releases the file found at the following repository(s):
+
+       http://www.softwarediamonds/packages/ExtUtils-SVDmaker-0.01
+       http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/ExtUtils-SVDmaker-0.01
+
+    Restrictions regarding duplication and license provisions are as
+    follows:
+
+    Copyright.
+        copyright © 2003 Software Diamonds
+
+    Copyright holder contact.
+         603 882-0846 E<lt>support@SoftwareDiamonds.comE<gt>
+
+    License.
+        These files are a POD derived works from the hard copy public domain
+        version freely distributed by the United States Federal Government.
+
+        The original hardcopy version is always the authoritative document
+        and any conflict between the original hardcopy version governs
+        whenever there is any conflict. In more explicit terms, any conflict
+        is a transcription error in converting the origninal hard-copy
+        version to this POD format. Software Diamonds assumes no responsible
+        for such errors.
+
+        Software Diamonds permits the redistribution and use in source and
+        binary forms, with or without modification, provided that the
+        following conditions are met:
+
+        1   Redistributions of source code, modified or unmodified must
+            retain the above copyright notice, this list of conditions and
+            the following disclaimer.
+
+        2   Redistributions in binary form must reproduce the above
+            copyright notice, this list of conditions and the following
+            disclaimer in the documentation and/or other materials provided
+            with the distribution.
+
+        SOFTWARE DIAMONDS, http://www.SoftwareDiamonds.com, PROVIDES THIS
+        SOFTWARE 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+        BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+        FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+        SOFTWARE DIAMONDS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+        SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+        LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+        USE,DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+        ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+        OR TORT (INCLUDING USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE POSSIBILITY
+        OF SUCH DAMAGE.
+
+  3.2 Inventory of software contents
+
+    The content of the released, compressed, archieve file, consists of the
+    following files:
+
+     file                                                         version date       comment
+     ------------------------------------------------------------ ------- ---------- ------------------------
+     lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.01    2003/07/08 revised 0.01
+     MANIFEST                                                     0.01    2003/07/08 generated, replaces 0.01
+     Makefile.PL                                                  0.01    2003/07/08 generated, replaces 0.01
+     README                                                       0.01    2003/07/08 generated, replaces 0.01
+     lib/ExtUtils/SVDmaker.pm                                     1.03    2003/07/08 revised 1.02
+     bin/vmake.pl                                                 1.02    2003/07/08 new
+     t/ExtUtils/SVDmaker/Makefile2.PL                             0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/Makefile3.PL                             0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/MANIFEST2                                0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/README2                                  0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/README3                                  0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDmaker.d                               0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDmaker.pm                              0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDmaker.t                               0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDmaker0.pm                             0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDtest.ppd                              0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDtest2.pm                              0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDtest2.ppd                             0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDtest3.pm                              0.02    2003/07/08 new
+     t/ExtUtils/SVDmaker/SVDtest3.ppd                             0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/lib/module0.pm                           0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/lib/SVDtest0.pm                          0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.02    2003/07/08 new
+     t/ExtUtils/SVDmaker/t/SVDtest0.t                             0.01    2003/07/08 new
+     t/ExtUtils/SVDmaker/t/SVDtest2.t                             0.06    2003/07/08 new
+
+  3.3 Changes
+
+    The file names from 0.01 were changed as follows:
+
+      return if $file =~ s=lib/SVD/SVDgen.pm=lib/ExtUtils/SVDmaker.pm=;
+
+    Changes are as follows:
+
+    ExtUtils::SVDmaker 0.1
+        Change the name from SVD::SVDmaker to ExtUtils::SVDmaker. The CPAN
+        keepers have a no new top levels unless absolutely necessary policy.
+
+        Added tests. =back
+
+  3.4 Adaptation data.
+
+        This installation requires that the installation site has the Perl
+        programming language installed. Installation sites running Microsoft
+        Operating systems require the installation of Unix utilities. An
+        excellent, highly recommended Unix utilities for Microsoft operating
+        systems is unxutils by Karl M. Syring. A copy is available at the
+        following web sites:
+
+         http://unxutils.sourceforge.net
+         http://packages.SoftwareDiamnds.com
+
+        There are no other additional requirements or tailoring needed of
+        configurations files, adaptation data or other software needed for
+        this installation particular to any installation site.
+
+  3.5 Related documents.
+
+        There are no related documents needed for the installation and test
+        of this release.
+
+  3.6 Installation instructions.
+
+        Instructions for installation, installation tests and installation
+        support are as follows:
+
+        Installation Instructions.
+            The files may be installed under many different operating
+            systems. The compresssed, archived, distribution file containing
+            all installation files is at the following respository:
+
+                http://www.softwarediamonds/packages/ExtUtils-SVDmaker-0.01
+               http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/ExtUtils-SVDmaker-0.01
+            /ExtUtils-SVDmaker-0.01.tar.gz 
+
+            Follow the general Perl software installation procedure to
+            install the files contained in this distribution file.
+
+            The distribution name for and version are as follows:
+
+             distribution name: ExtUtils-SVDmaker
+             version          : 0.01
+
+        Prerequistes.
+             'DataPort::DataFile' => '0.02',
+             'DataPort::FileType::FormDB' => '0.02',
+             'DataPort::Maker' => '0',
+             'Test::Tech' => '1.08',
+             'Text::Scrub' => '0',
+             'IO::String' => '0',
+             'Text::Scrub' => '0',
+             'Text::Replace' => '0',
+             'Text::Column' => '0',
+             'File::AnySpec' => '0',
+             'File::TestPath' => '0',
+             'File::SubPM' => '0',
+             'File::PM2File' => '0',
+             'File::SmartNL' => '0',
+             'File::Package' => '0',
+             'File::Data' => '0',
+
+        Security, privacy, or safety precautions.
+            None.
+
+        Installation Tests.
+            Most Perl installation software will run the following test
+            script(s) as part of the installation:
+
+             t/ExtUtils/SVDmaker/SVDmaker.t
+
+        Installation support.
+            If there are installation problems or questions with the
+            installation contact
+
+             603 882-0846 E<lt>support@SoftwareDiamonds.comE<gt>
+
+  3.7 Possible problems and known errors
+
+        Open issues are as follows:
+
+        *   Should format $svd->{PREREQ_PM_TEXT} into a table.
+
+        *   Need to generted the requirements and add the addressed
+            requirements to the tests.
+
+4.0 NOTES
+        This document uses the following acronyms:
+
+        .d  extension for a Perl demo script file
+
+        .pm extension for a Perl Library Module
+
+        .t  extension for a test file
+
+        DID Data Item Description
+
+        DOD Department of Defense
+
+        POD Plain Old Documentation
+
+        SVD Software Version Description
+
+        STD Software Test Description
+
+        US  United States
+
+2.0 SEE ALSO
+        Modules with end-user functional interfaces relating to US DOD 2167A
+        automation are as follows:
+
+        Test::STDmaker
+        ExtUtils::SVDmaker
+        DataPort::FileType::FormDB
+        DataPort::DataFile
+        Test::Tech
+        Test
+        Data::Dumper
+        Test::STD::Scrub
+        Test::STD::STDutil
+        File::FileUtil
+        The design modules for Test::STDmaker have no other conceivable use
+        then to support the Test::STDmaker functional interface. The
+        Test::STDmaker design module are as follows:
+
+        Test::STD::Check
+        Test::STD::FileGen
+        Test::STD::STD2167
+        Test::STD::STDgen
+        Test::STDtype::Demo
+        Test::STDtype::STD
+        Test::STDtype::Verify
+        Some US DOD 2167A Software Development Standard, DIDs and other
+        related documents that complement the US DOD 2167A automation are as
+        follows:
+
+        US DOD Software Development Standard
+        US DOD Specification Practices
+        Computer Operation Manual (COM) DID
+        Computer Programming Manual (CPM) DID)
+        Computer Resources Integrated Support Document (CRISD) DID
+        Computer System Operator's Manual (CSOM) DID
+        Database Design Description (DBDD) DID
+        Engineering Change Proposal (ECP) DID
+        Firmware support Manual (FSM) DID
+        Interface Design Document (IDD) DID
+        Interface Requirements Specification (IRS) DID
+        Operation Concept Description (OCD) DID
+        Specification Change Notice (SCN) DID
+        Software Design Specification (SDD) DID
+        Software Development Plan (SDP) DID
+        Software Input and Output Manual (SIOM) DID
+        Software Installation Plan (SIP) DID
+        Software Programmer's Manual (SPM) DID
+        Software Product Specification (SPS) DID
+        Software Requirements Specification (SRS) DID
+        System or Segment Design Document (SSDD) DID
+        System or Subsystem Specification (SSS) DID
+        Software Test Description (STD) DID
+        Software Test Plan (STP) DID
+        Software Test Report (STR) DID
+        Software Transition Plan (STrP) DID
+        Software User Manual (SUM) DID
+        Software Version Description (SVD) DID
+        Version Description Document (VDD) DID
+        Test::STDmaker module
+            generates Test script, demo script and STD document POD from a
+            text database in the Data::Port::FileTYpe::FormDB format.
+
+        ExtUtils::SVDmaker module
+            generates SVD document POD and distribution *.tar.gz file
+            including a generated Makefile.PL README and MANIFEST file from
+            a text database in the Data::Port::FileTYpe::FormDB format.
+
+        The dependency of the program modules in the US DOD STD2167A bundle
+        is as follows:
+
+         File::TestPath File::Package File::SmartNL
+           Text::Scrub
+             Test::Tech
+
+                DataPort::FileType::FormDB DataPort::DataFile DataPort::Maker Text::Replace
+                Text::Column File::PM2File File::Data File::AnySpec File::SubPM
+
+                    Test::STDmaker ExtUtils::SVDmaker
+
+        The top level modules that establish the functional interface of
+        interest to the end user are the Test::STDmaker and the
+        ExtUtils::SVDmaker modules. The rest of the modules in the above
+        dependency tree are design modules for the US DOD STD2167A bundle.
+        They are broken out as separate modules because they may be of use
+        outside of the US DOD STD2167A bundle.
+
+        Note the File::FileUtil, Test::STD::STDutil Test::STD::Scrub program
+        modules breaks up the Test::TestUtil program module and
+        Test::TestUtil has disappeared. ^
+
+        DOCUMENT_OVERVIEW: This document releases ${NAME} version ${VERSION}
+        providing description of the inventory, installation instructions
+        and other information necessary to utilize and track this release. ^
+
+        LICENSE: These files are a POD derived works from the hard copy
+        public domain version freely distributed by the United States
+        Federal Government.
+
+        The original hardcopy version is always the authoritative document
+        and any conflict between the original hardcopy version governs
+        whenever there is any conflict. In more explicit terms, any conflict
+        is a transcription error in converting the origninal hard-copy
+        version to this POD format. Software Diamonds assumes no responsible
+        for such errors.
+
+        Software Diamonds permits the redistribution and use in source and
+        binary forms, with or without modification, provided that the
+        following conditions are met:
+
+        \=over 4
+
+        \=item 1
+
+        Redistributions of source code, modified or unmodified must retain
+        the above copyright notice, this list of conditions and the
+        following disclaimer.
+
+        \=item 2
+
+        Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+
+        \=back
+
+        SOFTWARE DIAMONDS, http://www.SoftwareDiamonds.com, PROVIDES THIS
+        SOFTWARE 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+        BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+        FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+        SOFTWARE DIAMONDS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+        SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+        LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+        USE,DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+        ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+        OR TORT (INCLUDING USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE POSSIBILITY
+        OF SUCH DAMAGE. ^
+
+        INSTALLATION: The files may be installed under many different
+        operating systems. The compresssed, archived, distribution file
+        containing all installation files is at the following respository:
+
+         ${REPOSITORY}/${DISTNAME}-${VERSION}.tar.gz 
+
+        Follow the general Perl software installation procedure to install
+        the files contained in this distribution file.
+
+        The distribution name for and version are as follows:
+
+         distribution name: ${DISTNAME}
+         version          : ${VERSION}
+
+        ^
+
+        PROBLEMS: Open issues are as follows:
+
+        \=over 4
+
+        \=item *
+
+        Should format $svd->{PREREQ_PM_TEXT} into a table.
+
+        \=item *
+
+        Need to generted the requirements and add the addressed requirements
+        to the tests.
+
+        \=back ^
+
+        SUPPORT: 603 882-0846 <support@SoftwareDiamonds.com> ^
+
+        NOTES: This document uses the following acronyms:
+
+        \=over 4
+
+        \=item .d
+
+        extension for a Perl demo script file
+
+        \=item .pm
+
+        extension for a Perl Library Module
+
+        \=item .t
+
+        extension for a test file
+
+        \=item DID
+
+        Data Item Description
+
+        \=item DOD
+
+        Department of Defense
+
+        \=item POD
+
+        Plain Old Documentation
+
+        \=item SVD
+
+        Software Version Description
+
+        \=item STD
+
+        Software Test Description
+
+        \=item US
+
+        United States
+
+        \=back ^ SEE_ALSO:
+
+        Modules with end-user functional interfaces relating to US DOD 2167A
+        automation are as follows:
+
+        \=over 4
+
+        \=item Test::STDmaker
+
+        \=item ExtUtils::SVDmaker
+
+        \=item DataPort::FileType::FormDB
+
+        \=item DataPort::DataFile
+
+        \=item Test::Tech
+
+        \=item Test
+
+        \=item Data::Dumper
+
+        \=item Test::STD::Scrub
+
+        \=item Test::STD::STDutil
+
+        \=item File::FileUtil
+
+        \=back
+
+        The design modules for Test::STDmaker have no other conceivable use
+        then to support the Test::STDmaker functional interface. The
+        Test::STDmaker design module are as follows:
+
+        \=over 4
+
+        \=item Test::STD::Check
+
+        \=item Test::STD::FileGen
+
+        \=item Test::STD::STD2167
+
+        \=item Test::STD::STDgen
+
+        \=item Test::STDtype::Demo
+
+        \=item Test::STDtype::STD
+
+        \=item Test::STDtype::Verify
+
+        \=back
+
+        Some US DOD 2167A Software Development Standard, DIDs and other
+        related documents that complement the US DOD 2167A automation are as
+        follows:
+
+        \=over 4
+
+        \=item US DOD Software Development Standard
+
+        \=item US DOD Specification Practices
+
+        \=item Computer Operation Manual (COM) DID
+
+        \=item Computer Programming Manual (CPM) DID)
+
+        \=item Computer Resources Integrated Support Document (CRISD) DID
+
+        \=item Computer System Operator's Manual (CSOM) DID
+
+        \=item Database Design Description (DBDD) DID
+
+        \=item Engineering Change Proposal (ECP) DID
+
+        \=item Firmware support Manual (FSM) DID
+
+        \=item Interface Design Document (IDD) DID
+
+        \=item Interface Requirements Specification (IRS) DID
+
+        \=item Operation Concept Description (OCD) DID
+
+        \=item Specification Change Notice (SCN) DID
+
+        \=item Software Design Specification (SDD) DID
+
+        \=item Software Development Plan (SDP) DID
+
+        \=item Software Input and Output Manual (SIOM) DID
+
+        \=item Software Installation Plan (SIP) DID
+
+        \=item Software Programmer's Manual (SPM) DID
+
+        \=item Software Product Specification (SPS) DID
+
+        \=item Software Requirements Specification (SRS) DID
+
+        \=item System or Segment Design Document (SSDD) DID
+
+        \=item System or Subsystem Specification (SSS) DID
+
+        \=item Software Test Description (STD) DID
+
+        \=item Software Test Plan (STP) DID
+
+        \=item Software Test Report (STR) DID
+
+        \=item Software Transition Plan (STrP) DID
+
+        \=item Software User Manual (SUM) DID
+
+        \=item Software Version Description (SVD) DID
+
+        \=item Version Description Document (VDD) DID
+
+        \=back
+
+        ^ HTML: <hr> <p><br> <!-- BLK ID="PROJECT_MANAGEMENT" --> <!-- /BLK
+        --> <p><br> <!-- BLK ID="NOTICE" --> <!-- /BLK --> <p><br> <!-- BLK
+        ID="OPT-IN" --> <!-- /BLK --> <p><br> <!-- BLK ID="LOG_CGI" --> <!--
+        /BLK --> <p><br> ^ ~-~
+

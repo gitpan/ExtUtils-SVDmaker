@@ -15,8 +15,8 @@ use Math::BigFloat 1.40;
 use Data::Startup;
 
 use vars qw( $VERSION $DATE $FILE);
-$VERSION = '0.07';
-$DATE = '2004/05/11';
+$VERSION = '0.08';
+$DATE = '2004/05/13';
 $FILE = __FILE__;
 
 use vars qw(@ISA @EXPORT_OK);
@@ -54,11 +54,11 @@ sub new
 
 }
 
-# use SelfLoader;
+use SelfLoader;
 
-# 1
+1
 
-# __DATA__
+__DATA__
 
 
 ###########

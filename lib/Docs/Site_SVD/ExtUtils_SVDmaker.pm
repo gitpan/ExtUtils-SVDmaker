@@ -10,54 +10,54 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.05';
-$DATE = '2004/05/11';
+$VERSION = '0.06';
+$DATE = '2004/05/13';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm' => [qw(0.05 2004/05/11), 'revised 0.04'],
-    'MANIFEST' => [qw(0.05 2004/05/11), 'generated, replaces 0.04'],
-    'Makefile.PL' => [qw(0.05 2004/05/11), 'generated, replaces 0.04'],
-    'README' => [qw(0.05 2004/05/11), 'generated, replaces 0.04'],
-    'lib/ExtUtils/SVDmaker.pm' => [qw(1.07 2004/05/11), 'revised 1.06'],
-    't/ExtUtils/SVDmaker/SVDmaker.d' => [qw(0.05 2004/05/11), 'revised 0.04'],
-    't/ExtUtils/SVDmaker/SVDmaker.pm' => [qw(0.05 2004/05/11), 'revised 0.04'],
-    't/ExtUtils/SVDmaker/SVDmaker.t' => [qw(0.05 2004/05/11), 'revised 0.04'],
-    't/ExtUtils/SVDmaker/lib/SVDtest1.pm' => [qw(0.03 2004/05/11), 'revised 0.02'],
-    't/ExtUtils/SVDmaker/vmake.pl' => [qw(1.04 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/Test/Tech.pm' => [qw(1.24 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/Data/Secs2.pm' => [qw(1.22 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/Data/SecsPack.pm' => [qw(0.07 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/Data/Startup.pm' => [qw(0.06 2004/05/11), 'new'],
+    'lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm' => [qw(0.06 2004/05/13), 'revised 0.05'],
+    'MANIFEST' => [qw(0.06 2004/05/13), 'generated, replaces 0.05'],
+    'Makefile.PL' => [qw(0.06 2004/05/13), 'generated, replaces 0.05'],
+    'README' => [qw(0.06 2004/05/13), 'generated, replaces 0.05'],
+    'lib/ExtUtils/SVDmaker.pm' => [qw(1.08 2004/05/13), 'revised 1.07'],
+    't/ExtUtils/SVDmaker/SVDmaker.d' => [qw(0.01 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/SVDmaker.pm' => [qw(0.01 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/SVDmaker.t' => [qw(0.06 2004/05/13), 'revised 0.05'],
+    't/ExtUtils/SVDmaker/lib/SVDtest1.pm' => [qw(0.03 2004/05/13), 'revised 0.02'],
+    't/ExtUtils/SVDmaker/vmake.pl' => [qw(1.04 2004/05/13), 'unchanged'],
+    't/ExtUtils/SVDmaker/Test/Tech.pm' => [qw(1.25 2004/05/13), 'revised 1.24'],
+    't/ExtUtils/SVDmaker/Data/Secs2.pm' => [qw(1.23 2004/05/13), 'revised 1.22'],
+    't/ExtUtils/SVDmaker/Data/SecsPack.pm' => [qw(0.08 2004/05/13), 'revised 0.07'],
+    't/ExtUtils/SVDmaker/Data/Startup.pm' => [qw(0.06 2004/05/13), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile2.PL' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile3.PL' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/MANIFEST2' => [qw(0.04 2004/05/11), 'revised 0.03'],
+    't/ExtUtils/SVDmaker/expected/MANIFEST2' => [qw(0.04 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/module0A.pm' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/module0B.pm' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/module2.pm' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/README2' => [qw(0.04 2004/05/11), 'revised 0.03'],
-    't/ExtUtils/SVDmaker/expected/README3' => [qw(0.05 2004/05/11), 'revised 0.04'],
+    't/ExtUtils/SVDmaker/expected/README2' => [qw(0.05 2004/05/13), 'revised 0.04'],
+    't/ExtUtils/SVDmaker/expected/README3' => [qw(0.06 2004/05/13), 'revised 0.05'],
     't/ExtUtils/SVDmaker/expected/SVDmaker0.pm' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest-0.01.html' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest.ppd' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/SVDtest0A.pm' => [qw(0.05 2004/05/11), 'revised 0.04'],
-    't/ExtUtils/SVDmaker/expected/SVDtest0A.t' => [qw(0.05 2004/05/11), 'revised 0.04'],
-    't/ExtUtils/SVDmaker/expected/SVDtest0B.pm' => [qw(0.05 2004/05/11), 'revised 0.04'],
-    't/ExtUtils/SVDmaker/expected/SVDtest0B.t' => [qw(0.05 2004/05/11), 'revised 0.04'],
+    't/ExtUtils/SVDmaker/expected/SVDtest0A.pm' => [qw(0.05 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/SVDtest0A.t' => [qw(0.05 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/SVDtest0B.pm' => [qw(0.05 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/SVDtest0B.t' => [qw(0.05 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest2-0.01.html' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/SVDtest2.pm' => [qw(0.04 2004/05/11), 'revised 0.03'],
-    't/ExtUtils/SVDmaker/expected/SVDtest2.ppd' => [qw(0.04 2004/05/11), 'revised 0.03'],
+    't/ExtUtils/SVDmaker/expected/SVDtest2.pm' => [qw(0.05 2004/05/13), 'revised 0.04'],
+    't/ExtUtils/SVDmaker/expected/SVDtest2.ppd' => [qw(0.04 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest2.t' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest3-0.02.html' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/SVDtest3.pm' => [qw(0.05 2004/05/11), 'revised 0.04'],
+    't/ExtUtils/SVDmaker/expected/SVDtest3.pm' => [qw(0.06 2004/05/13), 'revised 0.05'],
     't/ExtUtils/SVDmaker/expected/SVDtest3.ppd' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/Test/Tech.pm' => [qw(0.05 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/expected/Data/Secs2.pm' => [qw(0.05 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/expected/Data/SecsPack.pm' => [qw(0.05 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/expected/Data/Startup.pm' => [qw(0.05 2004/05/11), 'new'],
-    't/ExtUtils/SVDmaker/expected/File/Package.pm' => [qw(0.05 2004/05/11), 'new'],
+    't/ExtUtils/SVDmaker/expected/Test/Tech.pm' => [qw(0.05 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/Data/Secs2.pm' => [qw(0.05 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/Data/SecsPack.pm' => [qw(0.05 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/Data/Startup.pm' => [qw(0.05 2004/05/11), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/File/Package.pm' => [qw(0.05 2004/05/11), 'unchanged'],
 
 );
 
@@ -78,7 +78,7 @@ use vars qw(%INVENTORY);
 
 =head1 NAME
 
- ExtUtil::SVDmaker - Automate creating CPAN distributions
+Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
 
 =head1 Title Page
 
@@ -86,13 +86,13 @@ use vars qw(%INVENTORY);
 
  for
 
- ExtUtil::SVDmaker - Automate creating CPAN distributions
+ Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
 
- Revision: D
+ Revision: E
 
- Version: 0.05
+ Version: 0.06
 
- Date: 2004/05/11
+ Date: 2004/05/13
 
  Prepared for: General Public 
 
@@ -188,7 +188,7 @@ a text database in the Data::Port::FileTYpe::FormDB format.
 
 =head2 1.3 Document overview.
 
-This document releases ExtUtils::SVDmaker version 0.05
+This document releases ExtUtils::SVDmaker version 0.06
 providing description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -203,7 +203,7 @@ system file specification.
 
 This document releases the file 
 
- ExtUtils-SVDmaker-0.05.tar.gz
+ ExtUtils-SVDmaker-0.06.tar.gz
 
 found at the following repository(s):
 
@@ -298,48 +298,48 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.05    2004/05/11 revised 0.04
- MANIFEST                                                     0.05    2004/05/11 generated, replaces 0.04
- Makefile.PL                                                  0.05    2004/05/11 generated, replaces 0.04
- README                                                       0.05    2004/05/11 generated, replaces 0.04
- lib/ExtUtils/SVDmaker.pm                                     1.07    2004/05/11 revised 1.06
- t/ExtUtils/SVDmaker/SVDmaker.d                               0.05    2004/05/11 revised 0.04
- t/ExtUtils/SVDmaker/SVDmaker.pm                              0.05    2004/05/11 revised 0.04
- t/ExtUtils/SVDmaker/SVDmaker.t                               0.05    2004/05/11 revised 0.04
- t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/11 revised 0.02
- t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/11 new
- t/ExtUtils/SVDmaker/Test/Tech.pm                             1.24    2004/05/11 new
- t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.22    2004/05/11 new
- t/ExtUtils/SVDmaker/Data/SecsPack.pm                         0.07    2004/05/11 new
- t/ExtUtils/SVDmaker/Data/Startup.pm                          0.06    2004/05/11 new
+ lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.06    2004/05/13 revised 0.05
+ MANIFEST                                                     0.06    2004/05/13 generated, replaces 0.05
+ Makefile.PL                                                  0.06    2004/05/13 generated, replaces 0.05
+ README                                                       0.06    2004/05/13 generated, replaces 0.05
+ lib/ExtUtils/SVDmaker.pm                                     1.08    2004/05/13 revised 1.07
+ t/ExtUtils/SVDmaker/SVDmaker.d                               0.01    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/SVDmaker.pm                              0.01    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/SVDmaker.t                               0.06    2004/05/13 revised 0.05
+ t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/13 revised 0.02
+ t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/13 unchanged
+ t/ExtUtils/SVDmaker/Test/Tech.pm                             1.25    2004/05/13 revised 1.24
+ t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.23    2004/05/13 revised 1.22
+ t/ExtUtils/SVDmaker/Data/SecsPack.pm                         0.08    2004/05/13 revised 0.07
+ t/ExtUtils/SVDmaker/Data/Startup.pm                          0.06    2004/05/13 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile                        0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile2.PL                    0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile3.PL                    0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/MANIFEST2                       0.04    2004/05/11 revised 0.03
+ t/ExtUtils/SVDmaker/expected/MANIFEST2                       0.04    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/expected/module0A.pm                     0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/module0B.pm                     0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/module2.pm                      0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/README2                         0.04    2004/05/11 revised 0.03
- t/ExtUtils/SVDmaker/expected/README3                         0.05    2004/05/11 revised 0.04
+ t/ExtUtils/SVDmaker/expected/README2                         0.05    2004/05/13 revised 0.04
+ t/ExtUtils/SVDmaker/expected/README3                         0.06    2004/05/13 revised 0.05
  t/ExtUtils/SVDmaker/expected/SVDmaker0.pm                    0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest-0.01.html               0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest.ppd                     0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/SVDtest0A.pm                    0.05    2004/05/11 revised 0.04
- t/ExtUtils/SVDmaker/expected/SVDtest0A.t                     0.05    2004/05/11 revised 0.04
- t/ExtUtils/SVDmaker/expected/SVDtest0B.pm                    0.05    2004/05/11 revised 0.04
- t/ExtUtils/SVDmaker/expected/SVDtest0B.t                     0.05    2004/05/11 revised 0.04
+ t/ExtUtils/SVDmaker/expected/SVDtest0A.pm                    0.05    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/expected/SVDtest0A.t                     0.05    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/expected/SVDtest0B.pm                    0.05    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/expected/SVDtest0B.t                     0.05    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest2-0.01.html              0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/SVDtest2.pm                     0.04    2004/05/11 revised 0.03
- t/ExtUtils/SVDmaker/expected/SVDtest2.ppd                    0.04    2004/05/11 revised 0.03
+ t/ExtUtils/SVDmaker/expected/SVDtest2.pm                     0.05    2004/05/13 revised 0.04
+ t/ExtUtils/SVDmaker/expected/SVDtest2.ppd                    0.04    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest2.t                      0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest3-0.02.html              0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/SVDtest3.pm                     0.05    2004/05/11 revised 0.04
+ t/ExtUtils/SVDmaker/expected/SVDtest3.pm                     0.06    2004/05/13 revised 0.05
  t/ExtUtils/SVDmaker/expected/SVDtest3.ppd                    0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/Test/Tech.pm                    0.05    2004/05/11 new
- t/ExtUtils/SVDmaker/expected/Data/Secs2.pm                   0.05    2004/05/11 new
- t/ExtUtils/SVDmaker/expected/Data/SecsPack.pm                0.05    2004/05/11 new
- t/ExtUtils/SVDmaker/expected/Data/Startup.pm                 0.05    2004/05/11 new
- t/ExtUtils/SVDmaker/expected/File/Package.pm                 0.05    2004/05/11 new
+ t/ExtUtils/SVDmaker/expected/Test/Tech.pm                    0.05    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/expected/Data/Secs2.pm                   0.05    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/expected/Data/SecsPack.pm                0.05    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/expected/Data/Startup.pm                 0.05    2004/05/11 unchanged
+ t/ExtUtils/SVDmaker/expected/File/Package.pm                 0.05    2004/05/11 unchanged
 
 
 =head2 3.3 Changes
@@ -412,6 +412,11 @@ due to using program modules that that are not part of the distributions.
 SWitch from C<DataPort::Maker> to C<File::Maker>. Eliminated the use
 of C<File::Data> and C<File::TestPath>
 
+=item ExtUtils::SVDmaker-0.05
+
+Verbatim NAME section from template. Replaced.
+
+
 =back
 
 =head2 3.4 Adaptation data.
@@ -450,13 +455,13 @@ Enter one of the following repositories in a web browser:
   http://www.softwarediamonds/packages/
   http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-Right click on 'ExtUtils-SVDmaker-0.05.tar.gz' and download to a temporary
+Right click on 'ExtUtils-SVDmaker-0.06.tar.gz' and download to a temporary
 installation directory.
 Enter the following where $make is 'nmake' for microsoft
 windows; otherwise 'make'.
 
- gunzip ExtUtils-SVDmaker-0.05.tar.gz
- tar -xf ExtUtils-SVDmaker-0.05.tar
+ gunzip ExtUtils-SVDmaker-0.06.tar.gz
+ tar -xf ExtUtils-SVDmaker-0.06.tar
  perl Makefile.PL
  $make test
  $make install
@@ -574,10 +579,6 @@ United States
 
 =head1 2.0 SEE ALSO
 
-Modules with end-user functional interfaces 
-relating to US DOD 2167A automation are
-as follows:
-
 =over 4
 
 =item L<ExtUtils::SVDmaker|ExtUtils::SVDmaker>
@@ -600,72 +601,11 @@ as follows:
 
 =item L<Text::Scrub|Text::Scrub>
 
-=back
+=item L<Specification Practices|Docs::US_DOD::STD490A>
 
-
-Some US DOD 2167A Software Development Standard, DIDs and
-other related documents that complement the 
-US DOD 2167A automation are as follows:
-
-=over 4
-
-=item L<US DOD Software Development Standard|Docs::US_DOD::STD2167A>
-
-=item L<US DOD Specification Practices|Docs::US_DOD::STD490A>
-
-=item L<Computer Operation Manual (COM) DID|Docs::US_DOD::COM>
-
-=item L<Computer Programming Manual (CPM) DID)|Docs::US_DOD::CPM>
-
-=item L<Computer Resources Integrated Support Document (CRISD) DID|Docs::US_DOD::CRISD>
-
-=item L<Computer System Operator's Manual (CSOM) DID|Docs::US_DOD::CSOM>
-
-=item L<Database Design Description (DBDD) DID|Docs::US_DOD::DBDD>
-
-=item L<Engineering Change Proposal (ECP) DID|Docs::US_DOD::ECP>
-
-=item L<Firmware support Manual (FSM) DID|Docs::US_DOD::FSM>
-
-=item L<Interface Design Document (IDD) DID|Docs::US_DOD::IDD>
-
-=item L<Interface Requirements Specification (IRS) DID|Docs::US_DOD::IRS>
-
-=item L<Operation Concept Description (OCD) DID|Docs::US_DOD::OCD>
-
-=item L<Specification Change Notice (SCN) DID|Docs::US_DOD::SCN>
-
-=item L<Software Design Specification (SDD) DID|Docs::US_DOD::SDD>
-
-=item L<Software Development Plan (SDP) DID|Docs::US_DOD::SDP> 
-
-=item L<Software Input and Output Manual (SIOM) DID|Docs::US_DOD::SIOM>
-
-=item L<Software Installation Plan (SIP) DID|Docs::US_DOD::SIP>
-
-=item L<Software Programmer's Manual (SPM) DID|Docs::US_DOD::SPM>
-
-=item L<Software Product Specification (SPS) DID|Docs::US_DOD::SPS>
-
-=item L<Software Requirements Specification (SRS) DID|Docs::US_DOD::SRS>
-
-=item L<System or Segment Design Document (SSDD) DID|Docs::US_DOD::SSDD>
-
-=item L<System or Subsystem Specification (SSS) DID|Docs::US_DOD::SSS>
-
-=item L<Software Test Description (STD) DID|Docs::US_DOD::STD>
-
-=item L<Software Test Plan (STP) DID|Docs::US_DOD::STP>
-
-=item L<Software Test Report (STR) DID|Docs::US_DOD::STR>
-
-=item L<Software Transition Plan (STrP) DID|Docs::US_DOD::STrP>
-
-=item L<Software User Manual (SUM) DID|Docs::US_DOD::SUM>
+=item L<Software Development|Docs::US_DOD::STD2167A>
 
 =item L<Software Version Description (SVD) DID|Docs::US_DOD::SVD>
-
-=item L<Version Description Document (VDD) DID|Docs::US_DOD::VDD>
 
 =back
 
@@ -679,11 +619,11 @@ US DOD 2167A automation are as follows:
 __DATA__
 
 DISTNAME: ExtUtils-SVDmaker^
-VERSION : 0.05^
+VERSION : 0.06^
 FREEZE: 1^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.04^
-REVISION: D^
+PREVIOUS_RELEASE: 0.05^
+REVISION: E^
 
 AUTHOR  : SoftwareDiamonds.com E<lt> support@SoftwareDiamonds.com E<gt>^
 ABSTRACT: 
@@ -691,7 +631,7 @@ Generate Software Version Description (SVD) program modules and
 distribution files for CPAN.
 ^
 
-TITLE: ExtUtil::SVDmaker - Automate creating CPAN distributions^
+TITLE: Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions^
 END_USER: General Public^
 COPYRIGHT: copyright 2003 Software Diamonds^
 CLASSIFICATION: NONE^
@@ -816,6 +756,11 @@ due to using program modules that that are not part of the distributions.
 
 SWitch from C<DataPort::Maker> to C<File::Maker>. Eliminated the use
 of C<File::Data> and C<File::TestPath>
+
+\=item ExtUtils::SVDmaker-0.05
+
+Verbatim NAME section from template. Replaced.
+
 
 \=back
 ^
@@ -1076,10 +1021,6 @@ United States
 ^
 SEE_ALSO:
 
-Modules with end-user functional interfaces 
-relating to US DOD 2167A automation are
-as follows:
-
 \=over 4
 
 \=item L<ExtUtils::SVDmaker|ExtUtils::SVDmaker>
@@ -1102,72 +1043,11 @@ as follows:
 
 \=item L<Text::Scrub|Text::Scrub>
 
-\=back
+\=item L<Specification Practices|Docs::US_DOD::STD490A>
 
-
-Some US DOD 2167A Software Development Standard, DIDs and
-other related documents that complement the 
-US DOD 2167A automation are as follows:
-
-\=over 4
-
-\=item L<US DOD Software Development Standard|Docs::US_DOD::STD2167A>
-
-\=item L<US DOD Specification Practices|Docs::US_DOD::STD490A>
-
-\=item L<Computer Operation Manual (COM) DID|Docs::US_DOD::COM>
-
-\=item L<Computer Programming Manual (CPM) DID)|Docs::US_DOD::CPM>
-
-\=item L<Computer Resources Integrated Support Document (CRISD) DID|Docs::US_DOD::CRISD>
-
-\=item L<Computer System Operator's Manual (CSOM) DID|Docs::US_DOD::CSOM>
-
-\=item L<Database Design Description (DBDD) DID|Docs::US_DOD::DBDD>
-
-\=item L<Engineering Change Proposal (ECP) DID|Docs::US_DOD::ECP>
-
-\=item L<Firmware support Manual (FSM) DID|Docs::US_DOD::FSM>
-
-\=item L<Interface Design Document (IDD) DID|Docs::US_DOD::IDD>
-
-\=item L<Interface Requirements Specification (IRS) DID|Docs::US_DOD::IRS>
-
-\=item L<Operation Concept Description (OCD) DID|Docs::US_DOD::OCD>
-
-\=item L<Specification Change Notice (SCN) DID|Docs::US_DOD::SCN>
-
-\=item L<Software Design Specification (SDD) DID|Docs::US_DOD::SDD>
-
-\=item L<Software Development Plan (SDP) DID|Docs::US_DOD::SDP> 
-
-\=item L<Software Input and Output Manual (SIOM) DID|Docs::US_DOD::SIOM>
-
-\=item L<Software Installation Plan (SIP) DID|Docs::US_DOD::SIP>
-
-\=item L<Software Programmer's Manual (SPM) DID|Docs::US_DOD::SPM>
-
-\=item L<Software Product Specification (SPS) DID|Docs::US_DOD::SPS>
-
-\=item L<Software Requirements Specification (SRS) DID|Docs::US_DOD::SRS>
-
-\=item L<System or Segment Design Document (SSDD) DID|Docs::US_DOD::SSDD>
-
-\=item L<System or Subsystem Specification (SSS) DID|Docs::US_DOD::SSS>
-
-\=item L<Software Test Description (STD) DID|Docs::US_DOD::STD>
-
-\=item L<Software Test Plan (STP) DID|Docs::US_DOD::STP>
-
-\=item L<Software Test Report (STR) DID|Docs::US_DOD::STR>
-
-\=item L<Software Transition Plan (STrP) DID|Docs::US_DOD::STrP>
-
-\=item L<Software User Manual (SUM) DID|Docs::US_DOD::SUM>
+\=item L<Software Development|Docs::US_DOD::STD2167A>
 
 \=item L<Software Version Description (SVD) DID|Docs::US_DOD::SVD>
-
-\=item L<Version Description Document (VDD) DID|Docs::US_DOD::VDD>
 
 \=back
 
@@ -1179,6 +1059,10 @@ HTML:
 ^
 
 ~-~
+
+
+
+
 
 
 

@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE);
-$VERSION = '1.07';
-$DATE = '2004/05/11';
+$VERSION = '1.08';
+$DATE = '2004/05/13';
 
 ######
 # Distribution Program Modules
@@ -627,7 +627,7 @@ sub default_template
 
 =head1 NAME
 
- ${TITLE}
+${TITLE}
 
 =head1 Title Page
 
@@ -1593,7 +1593,6 @@ EOF
     mkpath( $dir ) if $dir;
     copy $svd_file, $release_file;
 
-
     1
 
 }
@@ -1718,9 +1717,10 @@ The code section contains the following
 Perl scalars: $VERSION, $DATE, and $FILE.
 The "ExtUtils::STDmaker" automatically generates this section.
 
-=item SVD POD Section
+=item SVD POD Section (DOD Tailoring)
 
-The SVD POD section is a slightly tailored 
+The Software Version Description (SVD)
+Plain Old Documentation (POD) section is in a slightly tailored 
 United States (US) Department of Defense (DOD)
 L<SVD Data Item Description (DID)|Docs::US_DOD::SVD> format.
 
@@ -2565,7 +2565,7 @@ follow on the next lines as comments. For example,
  #__DATA__
 
  #DISTNAME: SVDtest1^
- #VERSION:1.07^  
+ #VERSION:1.08^  
  #REPOSITORY_DIR: packages^
  #FREEZE: 0^
 
@@ -2940,8 +2940,8 @@ follow on the next lines as comments. For example,
  # 't/SVDtest1....1..3
  ## Running under perl version 5.006001 for MSWin32
  ## Win32::BuildNumber 635
- ## Current time local: Tue May 11 10:32:49 2004
- ## Current time GMT:   Tue May 11 14:32:49 2004
+ ## Current time local: Thu May 13 21:46:00 2004
+ ## Current time GMT:   Fri May 14 01:46:00 2004
  ## Using Test.pm version 1.24
  ## Test::Tech    : 1.24
  ## Data::Secs2   : 1.22
@@ -3018,7 +3018,7 @@ follow on the next lines as comments. For example,
 
  #=head1 NAME
 
- # ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+ #ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
  #=head1 Title Page
 
@@ -3538,7 +3538,7 @@ follow on the next lines as comments. For example,
 
  #=head1 NAME
 
- # ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+ #ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
  #=head1 Title Page
 
@@ -4091,7 +4091,7 @@ follow on the next lines as comments. For example,
  $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))
 
  # 'NAME
- #     ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+ #    ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
  #Title Page
  #     Software Version Description
@@ -4350,8 +4350,8 @@ follow on the next lines as comments. For example,
  # 't/SVDtest1....1..3
  ## Running under perl version 5.006001 for MSWin32
  ## Win32::BuildNumber 635
- ## Current time local: Tue May 11 10:32:51 2004
- ## Current time GMT:   Tue May 11 14:32:51 2004
+ ## Current time local: Thu May 13 21:46:02 2004
+ ## Current time GMT:   Fri May 14 01:46:02 2004
  ## Using Test.pm version 1.24
  ## Test::Tech    : 1.24
  ## Data::Secs2   : 1.22
@@ -4428,7 +4428,7 @@ follow on the next lines as comments. For example,
 
  #=head1 NAME
 
- # ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+ #ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
  #=head1 Title Page
 
@@ -4948,7 +4948,7 @@ follow on the next lines as comments. For example,
 
  #=head1 NAME
 
- # ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+ #ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
  #=head1 Title Page
 
@@ -5501,7 +5501,7 @@ follow on the next lines as comments. For example,
  $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))
 
  # 'NAME
- #     ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+ #    ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
  #Title Page
  #     Software Version Description

@@ -7,8 +7,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE);
-$VERSION = '0.05';   # automatically generated file
-$DATE = '2004/05/11';
+$VERSION = '0.06';   # automatically generated file
+$DATE = '2004/05/13';
 $FILE = __FILE__;
 
 
@@ -78,7 +78,8 @@ BEGIN {
    # and the todo tests
    #
    require Test::Tech;
-   Test::Tech->import( qw(finish is_skip ok plan skip skip_tests tech_config) );
+   Test::Tech->import( qw(finish is_skip ok ok_sub plan skip 
+                          skip_sub skip_tests tech_config) );
    plan(tests => 20);
 
 }
@@ -167,13 +168,13 @@ my $errors = $fp->load_package( 'ExtUtils::SVDmaker' );
 # 
 
 #####
-skip_tests( 1 ) unless skip(
-      $loaded, # condition to skip test   
+skip_tests( 1 ) unless
+  skip( $loaded, # condition to skip test   
       $errors, # actual results
-      '',  # expected results
+      '', # expected results
       "",
       "Load UUT");
- 
+
 #  ok:  2
 
    # Perl code from C:
@@ -218,11 +219,11 @@ skip_tests( 1 ) unless skip(
     open STDERR, ">&SAVE_ERR";
     my $output = $snl->fin( 'SVDtest1.log' );
 
-skip_tests( 1 ) unless ok(
-      $success, # actual results
-      1, # expected results
-      "$output",
-      "Vmake new"); 
+skip_tests( 1 ) unless
+  ok(  $success, # actual results
+     1, # expected results
+     "$output",
+     "Vmake new");
 
 #  ok:  3
 
@@ -311,11 +312,11 @@ ok(  -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' ), # actual resu
     open STDERR, ">&SAVE_ERR";
     $output = $snl->fin( 'SVDtest1.log' );
 
-skip_tests( 1 ) unless ok(
-      $success, # actual results
-      1, # expected results
-      "$output",
-      "Vmake revised 0.01"); 
+skip_tests( 1 ) unless
+  ok(  $success, # actual results
+     1, # expected results
+     "$output",
+     "Vmake revised 0.01");
 
 #  ok:  12
 

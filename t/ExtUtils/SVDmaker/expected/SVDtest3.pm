@@ -48,7 +48,7 @@ use vars qw(%INVENTORY);
 
 =head1 NAME
 
- ExtUtils::SVDmaker::SVDtest - Test SVDmaker
+ExtUtils::SVDmaker::SVDtest - Test SVDmaker
 
 =head1 Title Page
 

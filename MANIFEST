@@ -11,6 +11,7 @@ t/ExtUtils/SVDmaker/Revise.pm
 t/ExtUtils/SVDmaker/Revise.t
 t/ExtUtils/SVDmaker/vmake.pl
 t/ExtUtils/SVDmaker/Test/Tech.pm
+t/ExtUtils/SVDmaker/Text/Scrub.pm
 t/ExtUtils/SVDmaker/Data/Secs2.pm
 t/ExtUtils/SVDmaker/Data/Str2Num.pm
 t/ExtUtils/SVDmaker/Data/Startup.pm

@@ -787,7 +787,7 @@ DEMONSTRATION
      #__DATA__
 
      #DISTNAME: SVDtest1^
-     #VERSION:1.11^  
+     #VERSION:1.12^   
      #REPOSITORY_DIR: packages^
      #FREEZE: 0^
 
@@ -2651,9 +2651,9 @@ Title Page
 
      Docs::Site_SVD::ExtUtils_SVDmaker - Create CPAN distributions
 
-     Revision: H
+     Revision: J
 
-     Version: 0.09
+     Version: 0.10
 
      Date: 2004/05/25
 
@@ -2725,7 +2725,7 @@ Title Page
 
   1.3 Document overview.
 
-    This document releases ExtUtils::SVDmaker version 0.09 providing
+    This document releases ExtUtils::SVDmaker version 0.10 providing
     description of the inventory, installation instructions and other
     information necessary to utilize and track this release.
 
@@ -2737,7 +2737,7 @@ Title Page
 
     This document releases the file
 
-     ExtUtils-SVDmaker-0.09.tar.gz
+     ExtUtils-SVDmaker-0.10.tar.gz
 
     found at the following repository(s):
 
@@ -2804,25 +2804,26 @@ Title Page
 
      file                                                         version date       comment
      ------------------------------------------------------------ ------- ---------- ------------------------
-     lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.09    2004/05/25 revised 0.08
-     MANIFEST                                                     0.09    2004/05/25 generated, replaces 0.08
-     Makefile.PL                                                  0.09    2004/05/25 generated, replaces 0.08
-     README                                                       0.09    2004/05/25 generated, replaces 0.08
-     lib/ExtUtils/SVDmaker.pm                                     1.11    2004/05/25 revised 1.1
-     t/ExtUtils/SVDmaker/Original.d                               0.01    2004/05/25 new
-     t/ExtUtils/SVDmaker/Original.pm                              0.01    2004/05/25 new
-     t/ExtUtils/SVDmaker/Original.t                               0.01    2004/05/25 new
-     t/ExtUtils/SVDmaker/Revise.d                                 0.01    2004/05/25 new
-     t/ExtUtils/SVDmaker/Revise.pm                                0.01    2004/05/25 new
-     t/ExtUtils/SVDmaker/Revise.t                                 0.01    2004/05/25 new
+     lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.10    2004/05/25 revised 0.09
+     MANIFEST                                                     0.10    2004/05/25 generated, replaces 0.09
+     Makefile.PL                                                  0.10    2004/05/25 generated, replaces 0.09
+     README                                                       0.10    2004/05/25 generated, replaces 0.09
+     lib/ExtUtils/SVDmaker.pm                                     1.12    2004/05/25 revised 1.11
+     t/ExtUtils/SVDmaker/Original.d                               0.01    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Original.pm                              0.01    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Original.t                               0.01    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Revise.d                                 0.01    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Revise.pm                                0.01    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Revise.t                                 0.01    2004/05/25 unchanged
      t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/25 unchanged
      t/ExtUtils/SVDmaker/Test/Tech.pm                             1.26    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Text/Scrub.pm                            1.17    2004/05/25 new
      t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.26    2004/05/25 unchanged
      t/ExtUtils/SVDmaker/Data/Str2Num.pm                          0.08    2004/05/25 unchanged
      t/ExtUtils/SVDmaker/Data/Startup.pm                          0.07    2004/05/25 unchanged
-     t/ExtUtils/SVDmaker/Test.pm                                  0.09    2004/05/25 new
-     t/ExtUtils/SVDmaker/Algorithm/Diff.pm                        0.09    2004/05/25 new
-     t/ExtUtils/SVDmaker/Pod/Text.pm                              0.09    2004/05/25 new
+     t/ExtUtils/SVDmaker/Test.pm                                  0.10    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Algorithm/Diff.pm                        0.10    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/Pod/Text.pm                              0.10    2004/05/25 unchanged
      t/ExtUtils/SVDmaker/expected/Makefile                        0.04    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/Makefile2.PL                    0.03    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/Makefile3.PL                    0.03    2003/08/04 unchanged
@@ -2839,8 +2840,8 @@ Title Page
      t/ExtUtils/SVDmaker/expected/SVDtest0A.t                     0.05    2004/05/11 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest0B.pm                    0.05    2004/05/11 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest0B.t                     0.05    2004/05/11 unchanged
-     t/ExtUtils/SVDmaker/expected/SVDtest1-0.01.tar.gz            0.09    2004/05/25 new
-     t/ExtUtils/SVDmaker/expected/SVDtest1.ppd                    0.09    2004/05/25 new
+     t/ExtUtils/SVDmaker/expected/SVDtest1-0.01.tar.gz            0.09    2004/05/25 unchanged
+     t/ExtUtils/SVDmaker/expected/SVDtest1.ppd                    0.09    2004/05/25 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest2-0.01.html              0.03    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest2.pm                     0.05    2004/05/13 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest2.ppd                    0.04    2004/05/11 unchanged
@@ -2981,6 +2982,35 @@ Title Page
          #    Expected: '1' (Required SVD DB field, DISTNAME, missing.
          #Use of uninitialized value in substitution (s///) at /home/alian/.cpanplus/5.8.4/build/ExtUtils-SVDmaker-0.08/blib/lib/ExtUtils/SVDmaker.pm line 489, <DATA> line 698.
 
+    ExtUtils::SVDmaker-0.10
+        Failure:
+
+        Failuring test 10 of both "original.t" test script and the
+        "revise.t" test script.
+
+         Subject: FAIL ExtUtils-SVDmaker-0.09 ppc-linux 2.4.19-4a 
+         From: alian@cpan.org (CPAN Tester + CPAN++ automate) 
+         t/ExtUtils/SVDmaker/Original....# Test 10 got: 
+ 
+         [snip]
+
+         #     - "\t\t<OS NAME=\"MSWin32\" />\n"
+         #     + "\t\t<OS NAME=\"linux\" />\n"
+
+         [snip]
+
+        Analysis:
+
+        Not using the lastest version of "Test::Scrub" which will wild card
+        out "OS NAME"
+
+        Corrective:
+
+        Put lastest version in "ExtUtils::SVDmaker use", the "Makerfile.PL"
+        prerequesite and also load the lastes in the test
+        "t::Test::ExtUtils::SVDmaker" repository. (Quite a few times CPAN
+        package does not handle prereuesites as expected)
+
   3.4 Adaptation data.
 
     This installation requires that the installation site has the Perl
@@ -3014,12 +3044,12 @@ Title Page
           http://www.softwarediamonds/packages/
           http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-        Right click on 'ExtUtils-SVDmaker-0.09.tar.gz' and download to a
+        Right click on 'ExtUtils-SVDmaker-0.10.tar.gz' and download to a
         temporary installation directory. Enter the following where $make is
         'nmake' for microsoft windows; otherwise 'make'.
 
-         gunzip ExtUtils-SVDmaker-0.09.tar.gz
-         tar -xf ExtUtils-SVDmaker-0.09.tar
+         gunzip ExtUtils-SVDmaker-0.10.tar.gz
+         tar -xf ExtUtils-SVDmaker-0.10.tar
          perl Makefile.PL
          $make test
          $make install
@@ -3046,7 +3076,7 @@ Title Page
          'File::Where' => '0',
          'Text::Replace' => '0',
          'Text::Column' => '0',
-         'Text::Scrub' => '1.13',
+         'Text::Scrub' => '1.17',
          'Tie::Form' => '0.01',
          'Tie::Layers' => '0.04',
          'Tie::Gzip' => '1.15',

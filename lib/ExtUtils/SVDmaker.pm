@@ -10,7 +10,7 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE);
-$VERSION = '1.11';
+$VERSION = '1.12';
 $DATE = '2004/05/25';
 
 ######
@@ -35,7 +35,7 @@ use File::SmartNL 1.14;
 use File::Where;
 use Text::Column;
 use Text::Replace;
-use Text::Scrub 1.13;
+use Text::Scrub 1.17;
 use Tie::Form 0.01;
 use Tie::Layers 0.04;
 
@@ -2561,7 +2561,7 @@ follow on the next lines as comments. For example,
  #__DATA__
 
  #DISTNAME: SVDtest1^
- #VERSION:1.11^  
+ #VERSION:1.12^   
  #REPOSITORY_DIR: packages^
  #FREEZE: 0^
 

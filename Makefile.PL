@@ -23,7 +23,7 @@ my $tests = join ' ',unix2os('t/ExtUtils/SVDmaker/Original.t','t/ExtUtils/SVDmak
 WriteMakefile(
     NAME => 'ExtUtils::SVDmaker',
     DISTNAME => 'ExtUtils-SVDmaker',
-    VERSION  => '0.09',
+    VERSION  => '0.10',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},
@@ -35,7 +35,7 @@ WriteMakefile(
                   'File::Where' => '0',
                   'Text::Replace' => '0',
                   'Text::Column' => '0',
-                  'Text::Scrub' => '1.13',
+                  'Text::Scrub' => '1.17',
                   'Tie::Form' => '0.01',
                   'Tie::Layers' => '0.04',
                   'Tie::Gzip' => '1.15',},

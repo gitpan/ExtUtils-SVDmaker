@@ -3,22 +3,22 @@
 # The copyright notice and plain old documentation (POD)
 # are at the end of this file.
 #
-package  t::ExtUtils::SVDmaker::SVDmaker;
+package  t::ExtUtils::SVDmaker::Original;
 
 use strict;
 use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.05';
-$DATE = '2004/05/11';
+$VERSION = '0.01';
+$DATE = '2004/05/25';
 $FILE = __FILE__;
 
 ########
 # The Test::STDmaker module uses the data after the __DATA__ 
 # token to automatically generate the this file.
 #
-# Don't edit anything before __DATA_. Edit instead
+# Do not edit anything before __DATA_. Edit instead
 # the data after the __DATA__ token.
 #
 # ANY CHANGES MADE BEFORE the  __DATA__ token WILL BE LOST
@@ -27,6 +27,10 @@ $FILE = __FILE__;
 #
 #
 
+
+=head1 NAME
+
+ - Software Test Description for ExtUtils::SVDmaker
 
 =head1 TITLE PAGE
 
@@ -40,7 +44,7 @@ $FILE = __FILE__;
 
  Version: 
 
- Date: 2004/05/11
+ Date: 2004/05/25
 
  Prepared for: General Public 
 
@@ -48,39 +52,44 @@ $FILE = __FILE__;
 
  Classification: None
 
+#######
+#  
+#  1. SCOPE
+#
+#
 =head1 SCOPE
 
 This detail STD and the 
 L<General Perl Program Module (PM) STD|Test::STD::PerlSTD>
 establishes the tests to verify the
 requirements of Perl Program Module (PM) L<ExtUtils::SVDmaker|ExtUtils::SVDmaker>
-
 The format of this STD is a tailored L<2167A STD DID|Docs::US_DOD::STD>.
-in accordance with 
-L<Detail STD Format|Test::STDmaker/Detail STD Format>.
+
+#######
+#  
+#  3. TEST PREPARATIONS
+#
+#
+=head1 TEST PREPARATIONS
+
+Test preparations are establishes by the L<General STD|Test::STD::PerlSTD>.
+
 
 #######
 #  
 #  4. TEST DESCRIPTIONS
 #
-#  4.1 Test 001
 #
-#  ..
-#
-#  4.x Test x
-#
-#
-
 =head1 TEST DESCRIPTIONS
 
 The test descriptions uses a legend to
 identify different aspects of a test description
 in accordance with
-L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description Fields>.
+L<STD PM Form Database Test Description Fields|Test::STDmaker/STD PM Form Database Test Description Fields>.
 
 =head2 Test Plan
 
- T: 20^
+ T: 11^
 
 =head2 ok: 1
 
@@ -135,7 +144,6 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
      copy ($fs->catfile('expected','SVDtest0A.pm'),$fs->catfile('lib','SVDtest1.pm'));
      copy ($fs->catfile('expected','module0A.pm'),$fs->catfile('lib','module1.pm'));
      copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
-     copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
      copy ($fs->catfile('expected','Test','Tech.pm'),$fs->catfile('t','Test','Tech.pm'));
      copy ($fs->catfile('expected','Data','Startup.pm'),$fs->catfile('t','Data','Startup.pm'));
      copy ($fs->catfile('expected','Data','Secs2.pm'),$fs->catfile('t','Data','Secs2.pm'));
@@ -145,10 +153,13 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
  ^
  DO: ^
   A: $snl->fin( File::Spec->catfile('lib', 'module1.pm'))^
- DO: ^
+
+DO: ^
   A: $snl->fin( File::Spec->catfile('lib', 'SVDtest1.pm'))^
- DO: ^
+
+DO: ^
   A: $snl->fin( File::Spec->catfile('t', 'SVDtest1.t'))^
+
 
   C:
      unlink 'SVDtest1.log';
@@ -177,7 +188,8 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
 
  DO: ^
   A: $output^
-  N: All tests successful^
+
+ N: All tests successful^
   A: $output =~ /All tests successful/^
   E: 1^
  ok: 4^
@@ -231,100 +243,6 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
   E: 1^
  ok: 11^
 
-=head2 ok: 12
-
-
-  C:
-     skip_tests(0);
-     #######
-     # Freeze version based on previous version
-     #
-     unlink File::Spec->catfile('t','SVDtest1.t');
-     unlink File::Spec->catfile('lib','SVDtest1.pm'),File::Spec->catfile('lib', 'module1.pm');
-     copy (File::Spec->catfile('expected','SVDtest0B.pm'),File::Spec->catfile('lib','SVDtest1.pm'));
-     copy (File::Spec->catfile('expected','module0B.pm'),File::Spec->catfile('lib','module1.pm'));
-     copy (File::Spec->catfile('expected','SVDtest0B.t'),File::Spec->catfile('t','SVDtest1.t'));
-     rmtree (File::Spec->catdir( 'packages', 'SVDtest1-0.01')); 
-     unlink 'SVDtest1.log';
-     no warnings;
-     open SAVE_OUT, ">&STDOUT";
-     open SAVE_ERR, ">&STDERR";
-     use warnings;
-     open STDOUT,'> SVDtest1.log';
-     open STDERR, ">&STDOUT";
-     $svd = new ExtUtils::SVDmaker( );
-     $success = $svd->vmake( {pm => 'SVDtest1'} );
-     close STDOUT;
-     close STDERR;
-     open STDOUT, ">&SAVE_OUT";
-     open STDERR, ">&SAVE_ERR";
-     $output = $snl->fin( 'SVDtest1.log' );
- ^
- VO: ^
-  N: Vmake revised 0.01^
- DM: $output^
-  A: $success^
- SE: 1^
- ok: 12^
-
-=head2 ok: 13
-
- DO: ^
-  A: $output^
-  N: All tests successful^
-  A: $output =~ /All tests successful/^
-  E: 1^
- ok: 13^
-
-=head2 ok: 14
-
-  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
-  N: generated SVD POD^
-  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
- ok: 14^
-
-=head2 ok: 15
-
-  A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
-  N: generated packages SVD POD^
-  E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
- ok: 15^
-
-=head2 ok: 16
-
-  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
-  N: generated MANIFEST^
-  E: $snl->fin( File::Spec->catfile( 'expected', 'MANIFEST2') )^
- ok: 16^
-
-=head2 ok: 17
-
-  A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
-  N: generated Makefile.PL^
-  E: $snl->fin( File::Spec->catfile( 'expected', 'Makefile3.PL') )^
- ok: 17^
-
-=head2 ok: 18
-
-  A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
-  N: generated README^
-  E: $s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'README3') ))^
- ok: 18^
-
-=head2 ok: 19
-
-  A: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) )))^
-  N: generated ppd^
-  E: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.ppd') )))^
- ok: 19^
-
-=head2 ok: 20
-
-  A: -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' )^
-  N: generated distribution^
-  E: 1^
- ok: 20^
-
 
 
 #######
@@ -337,12 +255,12 @@ L<STD FormDB Test Description Fields|Test::STDmaker/STD FormDB Test Description 
 
   Requirement                                                      Test
  ---------------------------------------------------------------- ----------------------------------------------------------------
- L<ExtUtils::SVDmaker/load [1]>                                   L<t::ExtUtils::SVDmaker::SVDmaker/ok: 2>
+ L<ExtUtils::SVDmaker/load [1]>                                   L<t::ExtUtils::SVDmaker::Original/ok: 2>
 
 
   Test                                                             Requirement
  ---------------------------------------------------------------- ----------------------------------------------------------------
- L<t::ExtUtils::SVDmaker::SVDmaker/ok: 2>                         L<ExtUtils::SVDmaker/load [1]>
+ L<t::ExtUtils::SVDmaker::Original/ok: 2>                         L<ExtUtils::SVDmaker/load [1]>
 
 
 =cut
@@ -379,6 +297,21 @@ disclaimer in the documentation and/or
 other materials provided with the
 distribution.
 
+=item 3
+
+Commercial installation of the binary or source
+must visually present to the installer 
+the above copyright notice,
+this list of conditions intact,
+that the original source is available
+at http://softwarediamonds.com
+and provide means
+for the installer to actively accept
+the list of conditions; 
+otherwise, a license fee must be paid to
+Softwareware Diamonds.
+
+
 =back
 
 SOFTWARE DIAMONDS, http://www.SoftwareDiamonds.com,
@@ -411,11 +344,7 @@ ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =item L<SVD Automated Generation|ExtUtils::SVDmaker>
 
-=item L<DataPort::FileType::FormDB|DataPort::FileType::FormDB>
-
-=item L<File::FileUtil|Test::FileUtil>
-
-=item L<Test::STD::TestUtil|Test::STD::TestUtil>
+=item L<Tie::Form|Tie::Form>
 
 =item L<Software Development Standard|Docs::US_DOD::STD2167A>
 
@@ -423,11 +352,7 @@ ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =item L<SVD DID|US_DOD::SVD>
 
-=back 
-
-The web page http://perl.SoftwareDiamonds.com provides a list of educational
-and reference litature on the Perl Programming Language including
-Plain Old Documentation (POD)s
+=back
 
 =back
 
@@ -438,21 +363,22 @@ Plain Old Documentation (POD)s
 
 __DATA__
 
+Name: ^
 File_Spec: Unix^
 UUT: ExtUtils::SVDmaker^
 Revision: -^
+Version: ^
 End_User: General Public^
 Author: http://www.SoftwareDiamonds.com support@SoftwareDiamonds.com^
-Detail_Template: ^
 STD2167_Template: ^
-Version: ^
+Detail_Template: ^
 Classification: None^
 Temp: temp.pl^
-Demo: SVDmaker.d^
-Verify: SVDmaker.t^
+Demo: Original.d^
+Verify: Original.t^
 
 
- T: 20^
+ T: 11^
 
 
  C:
@@ -505,7 +431,6 @@ ok: 2^
     copy ($fs->catfile('expected','SVDtest0A.pm'),$fs->catfile('lib','SVDtest1.pm'));
     copy ($fs->catfile('expected','module0A.pm'),$fs->catfile('lib','module1.pm'));
     copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
-    copy ($fs->catfile('expected','SVDtest0A.t'),$fs->catfile('t','SVDtest1.t'));
     copy ($fs->catfile('expected','Test','Tech.pm'),$fs->catfile('t','Test','Tech.pm'));
     copy ($fs->catfile('expected','Data','Startup.pm'),$fs->catfile('t','Data','Startup.pm'));
     copy ($fs->catfile('expected','Data','Secs2.pm'),$fs->catfile('t','Data','Secs2.pm'));
@@ -517,10 +442,13 @@ ok: 2^
 
 DO: ^
  A: $snl->fin( File::Spec->catfile('lib', 'module1.pm'))^
+
 DO: ^
  A: $snl->fin( File::Spec->catfile('lib', 'SVDtest1.pm'))^
+
 DO: ^
  A: $snl->fin( File::Spec->catfile('t', 'SVDtest1.t'))^
+
 
  C:
     unlink 'SVDtest1.log';
@@ -548,6 +476,7 @@ ok: 3^
 
 DO: ^
  A: $output^
+
  N: All tests successful^
  A: $output =~ /All tests successful/^
  E: 1^
@@ -590,86 +519,6 @@ ok: 11^
 
 
  C:
-    skip_tests(0);
-
-    #######
-    # Freeze version based on previous version
-    #
-    unlink File::Spec->catfile('t','SVDtest1.t');
-    unlink File::Spec->catfile('lib','SVDtest1.pm'),File::Spec->catfile('lib', 'module1.pm');
-    copy (File::Spec->catfile('expected','SVDtest0B.pm'),File::Spec->catfile('lib','SVDtest1.pm'));
-    copy (File::Spec->catfile('expected','module0B.pm'),File::Spec->catfile('lib','module1.pm'));
-    copy (File::Spec->catfile('expected','SVDtest0B.t'),File::Spec->catfile('t','SVDtest1.t'));
-
-    rmtree (File::Spec->catdir( 'packages', 'SVDtest1-0.01')); 
-
-    unlink 'SVDtest1.log';
-    no warnings;
-    open SAVE_OUT, ">&STDOUT";
-    open SAVE_ERR, ">&STDERR";
-    use warnings;
-    open STDOUT,'> SVDtest1.log';
-    open STDERR, ">&STDOUT";
-    $svd = new ExtUtils::SVDmaker( );
-    $success = $svd->vmake( {pm => 'SVDtest1'} );
-    close STDOUT;
-    close STDERR;
-    open STDOUT, ">&SAVE_OUT";
-    open STDERR, ">&SAVE_ERR";
-    $output = $snl->fin( 'SVDtest1.log' );
-^
-
-VO: ^
- N: Vmake revised 0.01^
-DM: $output^
- A: $success^
-SE: 1^
-ok: 12^
-
-DO: ^
- A: $output^
- N: All tests successful^
- A: $output =~ /All tests successful/^
- E: 1^
-ok: 13^
-
- A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'lib', 'SVDtest1.pm' ) ) )^
- N: generated SVD POD^
- E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
-ok: 14^
-
- A: $s->scrub_date( $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'lib', 'SVDtest1.pm' ) ) )^
- N: generated packages SVD POD^
- E: $s->scrub_date( $snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.pm' ) ) )^
-ok: 15^
-
- A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'MANIFEST' ) )^
- N: generated MANIFEST^
- E: $snl->fin( File::Spec->catfile( 'expected', 'MANIFEST2') )^
-ok: 16^
-
- A: $snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'Makefile.PL' ) )^
- N: generated Makefile.PL^
- E: $snl->fin( File::Spec->catfile( 'expected', 'Makefile3.PL') )^
-ok: 17^
-
- A: $s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1-0.01', 'README' ) ))^
- N: generated README^
- E: $s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'README3') ))^
-ok: 18^
-
- A: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'packages', 'SVDtest1.ppd' ) )))^
- N: generated ppd^
- E: $s->scrub_architect($s->scrub_date($snl->fin( File::Spec->catfile( 'expected', 'SVDtest3.ppd') )))^
-ok: 19^
-
- A: -e File::Spec->catfile( 'packages', 'SVDtest1-0.01.tar.gz' )^
- N: generated distribution^
- E: 1^
-ok: 20^
-
-
- C:
     #####
     # Clean up
     #
@@ -684,25 +533,17 @@ ok: 20^
 See_Also:
 \=over 4
 
-=item L<SVD Automated Generation|ExtUtils::SVDmaker>
+\=item L<SVD Automated Generation|ExtUtils::SVDmaker>
 
-=item L<DataPort::FileType::FormDB|DataPort::FileType::FormDB>
+\=item L<Tie::Form|Tie::Form>
 
-=item L<File::FileUtil|Test::FileUtil>
+\=item L<Software Development Standard|Docs::US_DOD::STD2167A>
 
-=item L<Test::STD::TestUtil|Test::STD::TestUtil>
+\=item L<Specification Practices|Docs::US_DOD::STD490A>
 
-=item L<Software Development Standard|Docs::US_DOD::STD2167A>
+\=item L<SVD DID|US_DOD::SVD>
 
-=item L<Specification Practices|Docs::US_DOD::STD490A>
-
-=item L<SVD DID|US_DOD::SVD>
-
-=back 
-
-The web page http://perl.SoftwareDiamonds.com provides a list of educational
-and reference litature on the Perl Programming Language including
-Plain Old Documentation (POD)s
+\=back
 ^
 
 
@@ -714,15 +555,15 @@ and use in source and binary forms, with or
 without modification, provided that the 
 following conditions are met: 
 
-=over 4
+\=over 4
 
-=item 1
+\=item 1
 
 Redistributions of source code, modified or unmodified
 must retain the above copyright notice, this list of
 conditions and the following disclaimer. 
 
-=item 2
+\=item 2
 
 Redistributions in binary form must 
 reproduce the above copyright notice,
@@ -731,7 +572,22 @@ disclaimer in the documentation and/or
 other materials provided with the
 distribution.
 
-=back
+\=item 3
+
+Commercial installation of the binary or source
+must visually present to the installer 
+the above copyright notice,
+this list of conditions intact,
+that the original source is available
+at http://softwarediamonds.com
+and provide means
+for the installer to actively accept
+the list of conditions; 
+otherwise, a license fee must be paid to
+Softwareware Diamonds.
+
+
+\=back
 
 SOFTWARE DIAMONDS, http://www.SoftwareDiamonds.com,
 PROVIDES THIS SOFTWARE 

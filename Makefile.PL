@@ -17,13 +17,13 @@
 
 use ExtUtils::MakeMaker;
 
-my $tests = join ' ',unix2os('t/ExtUtils/SVDmaker/SVDmaker.t');
+my $tests = join ' ',unix2os('t/ExtUtils/SVDmaker/Original.t','t/ExtUtils/SVDmaker/Revise.t');
 
 
 WriteMakefile(
     NAME => 'ExtUtils::SVDmaker',
     DISTNAME => 'ExtUtils-SVDmaker',
-    VERSION  => '0.08',
+    VERSION  => '0.09',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},

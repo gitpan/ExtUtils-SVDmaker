@@ -11,12 +11,12 @@ use warnings::register;
 use attributes;
 
 use vars qw($VERSION $DATE $FILE);
-$VERSION = '1.23';
-$DATE = '2004/05/13';
+$VERSION = '1.26';
+$DATE = '2004/05/22';
 $FILE = __FILE__;
 
-use Data::SecsPack 0.04;
 use Data::Startup 0.02;
+use Data::Str2Num 0.05;
 use Data::Dumper;
 $Data::Dumper::Sortkeys = 1; # dump hashes sorted
 $Data::Dumper::Terse = 1; # avoid Varn Variables
@@ -47,7 +47,6 @@ sub new
        indent => '',
        version => $VERSION,
        warnings => 0,
-       'Data::SecsPack' => {}
    );
    $self->Data::Startup::override(@_);
 
@@ -60,9 +59,7 @@ sub new
 # in the regards to interface with SecsPack
 #
 # use SelfLoader;
-
 # 1
-
 # __DATA__
 
 
@@ -252,7 +249,7 @@ sub listify
                      }
                  }
                  if($is_numeric) {
-                     ($str, my @num) = Data::SecsPack->str2float(@{$var->[$i]}, {ascii_float => 1});
+                     ($str, my @num) = Data::Str2Num->str2float(@{$var->[$i]}, {ascii_float => 1});
                      if(@num != 0 && @$str == 0) {
                          push @secs_obj, 'N', \@num;
                          $i++;
@@ -321,7 +318,7 @@ sub listify
                      ######
                      # Try for a single packed number type
                      #
-                     ($str,my @num) = Data::SecsPack->str2float($var->[$i], {ascii_float => 1});
+                     ($str,my @num) = Data::Str2Num->str2float($var->[$i], {ascii_float => 1});
                      if(@num == 1 && @$str == 0) {
                          push @secs_obj, 'N', $num[0];
                      }
@@ -434,6 +431,7 @@ my @bin_format = (
 #
 sub neuterify
 {
+     require Data::SecsPack;
 
      ######
      # This subroutine uses no object data; therefore,
@@ -910,6 +908,7 @@ sub secs_elementify
          }
      }
      else {
+         require Data::SecsPack;
          if ($format =~ /[SUF]\d/ || $format eq 'T' || $format eq 'N') {
              my $number;
              $format = 'I' if $format eq 'N';
@@ -1072,7 +1071,7 @@ sub transify
               # Count the numbers, should agree with length 
               elsif ($format =~ /^[FNSTU]$/)  {
                   if(0 < $length) {
-                       ($str, my @nums) = Data::SecsPack->str2float($ascii_secs, {ascii_float => 1});
+                       ($str, my @nums) = Data::Str2Num->str2float($ascii_secs, {ascii_float => 1});
                        $ascii_secs = join ' ',@$str;
                        if($length != @nums) {
                            $event = "Wrong number of numbers." ;
@@ -1096,7 +1095,7 @@ sub transify
               ######
               # Count the numbers
               if( $format =~ /^[FNSTU]$/ ) {
-                  ($str, my @nums) = Data::SecsPack->str2float($ascii_secs, {ascii_float => 1});
+                  ($str, my @nums) = Data::Str2Num->str2float($ascii_secs, {ascii_float => 1});
                   $ascii_secs = join ' ',@$str;
                   push @secs_obj, "$format$byte_code";
                   if(@nums == 0) {

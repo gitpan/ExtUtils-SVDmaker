@@ -1,131 +1,4 @@
 NAME
-    ${TITLE}
-
-Title Page
-     Software Version Description
-
-     for
-
-     ${TITLE}
-
-     Revision: ${REVISION}
-
-     Version: ${VERSION}
-
-     Date: ${DATE}
-
-     Prepared for: ${END_USER} 
-
-     Prepared by:  ${AUTHOR}
-
-     Copyright: ${COPYRIGHT}
-
-     Classification: ${CLASSIFICATION}
-
-1.0 SCOPE
-    This paragraph identifies and provides an overview of the released
-    files.
-
-  1.1 Identification
-
-    This release, identified in 3.2, is a collection of Perl modules that
-    extend the capabilities of the Perl language.
-
-  1.2 System overview
-
-    ${CAPABILITIES}
-
-  1.3 Document overview.
-
-    ${DOCUMENT_OVERVIEW}
-
-3.0 VERSION DESCRIPTION
-    All file specifications in this SVD use the ${SVD_FSPEC} operating
-    system file specification.
-
-  3.1 Inventory of materials released.
-
-    This document releases the file
-
-     ${DIST_FILE}
-
-    found at the following repository(s):
-
-    ${REPOSITORY}
-
-    Restrictions regarding duplication and license provisions are as
-    follows:
-
-    Copyright.
-        ${COPYRIGHT}
-
-    Copyright holder contact.
-         ${SUPPORT}
-
-    License.
-        ${LICENSE}
-
-  3.2 Inventory of software contents
-
-    The content of the released, compressed, archieve file, consists of the
-    following files:
-
-    ${DIST_INVENTORY}
-
-  3.3 Changes
-
-    ${RESTRUCTURE_CHANGES}${CHANGES}
-
-  3.4 Adaptation data.
-
-    This installation requires that the installation site has the Perl
-    programming language installed. There are no other additional
-    requirements or tailoring needed of configurations files, adaptation
-    data or other software needed for this installation particular to any
-    installation site.
-
-  3.5 Related documents.
-
-    There are no related documents needed for the installation and test of
-    this release.
-
-  3.6 Installation instructions.
-
-    Instructions for installation, installation tests and installation
-    support are as follows:
-
-    Installation Instructions.
-        ${INSTALLATION}
-
-    Prerequistes.
-        ${PREREQ_PM_TEXT}
-
-    Security, privacy, or safety precautions.
-        None.
-
-    Installation Tests.
-        Most Perl installation software will run the following test
-        script(s) as part of the installation:
-
-        ${TEST_INVENTORY}
-
-    Installation support.
-        If there are installation problems or questions with the
-        installation contact
-
-         ${SUPPORT}
-
-  3.7 Possible problems and known errors
-
-    ${PROBLEMS}
-
-4.0 NOTES
-    ${NOTES}
-
-2.0 SEE ALSO
-    ${SEE_ALSO}
-
-NAME
     ExtUtil::SVDmaker - Automating creating CPAN distributions
 
 SYNOPSIS
@@ -915,7 +788,7 @@ DEMONSTRATION
      #__DATA__
 
      #DISTNAME: SVDtest1^
-     #VERSION:1.08^  
+     #VERSION:1.09^     
      #REPOSITORY_DIR: packages^
      #FREEZE: 0^
 
@@ -4154,58 +4027,15 @@ NOTES
     POSSIBILITY OF SUCH DAMAGE.
 
 SEE ALSO
-    The 2167A bundle functional program modules that contain an end-user
-    interface are as follows:
-
     Test::STDmaker
     ExtUtils::SVDmaker
-    DataPort::FileType::FormDB
-    DataPort::DataFile
+    Tie::Form
+    Tie::Layers
     Test::Tech
     File::FileUtil
     Test::STD::TestUtil
-    The 2167A bundle design program modules that support the functional
-    program modules are so specific that they have value only for support of
-    the function program modules are as follows:
-
-    Test::STD::Check
-    Test::STD::FileGen
-    Test::STD::STD2167
-    Test::STD::STDgen
-    Test::STDtype::Demo
-    Test::STDtype::STD
-    Test::STDtype::Verify
-    The ExtUtils::SVDmaker and Test::STDmaker automate of some of the US DOD
-    2167A Software Development Standard as established by the following US
-    DOD documents:
-
     US DOD Software Development Standard
     US DOD Specification Practices
-    Computer Operation Manual (COM) DID
-    Computer Programming Manual (CPM) DID)
-    Computer Resources Integrated Support Document (CRISD) DID
-    Computer System Operator's Manual (CSOM) DID
-    Database Design Description (DBDD) DID
-    Engineering Change Proposal (ECP) DID
-    Firmware support Manual (FSM) DID
-    Interface Design Document (IDD) DID
-    Interface Requirements Specification (IRS) DID
-    Operation Concept Description (OCD) DID
-    Specification Change Notice (SCN) DID
-    Software Design Specification (SDD) DID
-    Software Development Plan (SDP) DID
-    Software Input and Output Manual (SIOM) DID
-    Software Installation Plan (SIP) DID
-    Software Programmer's Manual (SPM) DID
-    Software Product Specification (SPS) DID
-    Software Requirements Specification (SRS) DID
-    System or Segment Design Document (SSDD) DID
-    System or Subsystem Specification (SSS) DID
-    Software Test Description (STD) DID
-    Software Test Plan (STP) DID
-    Software Test Report (STR) DID
-    Software Transition Plan (STrP) DID
-    Software User Manual (SUM) DID
     Software Version Description (SVD) DID
     Version Description Document (VDD) DID
 NAME
@@ -4218,11 +4048,11 @@ Title Page
 
      Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
 
-     Revision: E
+     Revision: F
 
-     Version: 0.06
+     Version: 0.07
 
-     Date: 2004/05/13
+     Date: 2004/05/22
 
      Prepared for: General Public 
 
@@ -4292,7 +4122,7 @@ Title Page
 
   1.3 Document overview.
 
-    This document releases ExtUtils::SVDmaker version 0.06 providing
+    This document releases ExtUtils::SVDmaker version 0.07 providing
     description of the inventory, installation instructions and other
     information necessary to utilize and track this release.
 
@@ -4304,7 +4134,7 @@ Title Page
 
     This document releases the file
 
-     ExtUtils-SVDmaker-0.06.tar.gz
+     ExtUtils-SVDmaker-0.07.tar.gz
 
     found at the following repository(s):
 
@@ -4371,20 +4201,20 @@ Title Page
 
      file                                                         version date       comment
      ------------------------------------------------------------ ------- ---------- ------------------------
-     lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.06    2004/05/13 revised 0.05
-     MANIFEST                                                     0.06    2004/05/13 generated, replaces 0.05
-     Makefile.PL                                                  0.06    2004/05/13 generated, replaces 0.05
-     README                                                       0.06    2004/05/13 generated, replaces 0.05
-     lib/ExtUtils/SVDmaker.pm                                     1.08    2004/05/13 revised 1.07
+     lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.07    2004/05/22 revised 0.06
+     MANIFEST                                                     0.07    2004/05/22 generated, replaces 0.06
+     Makefile.PL                                                  0.07    2004/05/22 generated, replaces 0.06
+     README                                                       0.07    2004/05/22 generated, replaces 0.06
+     lib/ExtUtils/SVDmaker.pm                                     1.09    2004/05/22 revised 1.08
      t/ExtUtils/SVDmaker/SVDmaker.d                               0.01    2004/05/11 unchanged
      t/ExtUtils/SVDmaker/SVDmaker.pm                              0.01    2004/05/11 unchanged
-     t/ExtUtils/SVDmaker/SVDmaker.t                               0.06    2004/05/13 revised 0.05
-     t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/13 revised 0.02
-     t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/13 unchanged
-     t/ExtUtils/SVDmaker/Test/Tech.pm                             1.25    2004/05/13 revised 1.24
-     t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.23    2004/05/13 revised 1.22
-     t/ExtUtils/SVDmaker/Data/SecsPack.pm                         0.08    2004/05/13 revised 0.07
-     t/ExtUtils/SVDmaker/Data/Startup.pm                          0.06    2004/05/13 unchanged
+     t/ExtUtils/SVDmaker/SVDmaker.t                               0.06    2004/05/13 unchanged
+     t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/22 revised 0.02
+     t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/22 unchanged
+     t/ExtUtils/SVDmaker/Test/Tech.pm                             1.26    2004/05/22 revised 1.25
+     t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.26    2004/05/22 revised 1.23
+     t/ExtUtils/SVDmaker/Data/Str2Num.pm                          0.08    2004/05/22 new
+     t/ExtUtils/SVDmaker/Data/Startup.pm                          0.07    2004/05/22 revised 0.06
      t/ExtUtils/SVDmaker/expected/Makefile                        0.04    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/Makefile2.PL                    0.03    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/Makefile3.PL                    0.03    2003/08/04 unchanged
@@ -4392,8 +4222,8 @@ Title Page
      t/ExtUtils/SVDmaker/expected/module0A.pm                     0.04    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/module0B.pm                     0.04    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/module2.pm                      0.03    2003/08/04 unchanged
-     t/ExtUtils/SVDmaker/expected/README2                         0.05    2004/05/13 revised 0.04
-     t/ExtUtils/SVDmaker/expected/README3                         0.06    2004/05/13 revised 0.05
+     t/ExtUtils/SVDmaker/expected/README2                         0.05    2004/05/13 unchanged
+     t/ExtUtils/SVDmaker/expected/README3                         0.06    2004/05/13 unchanged
      t/ExtUtils/SVDmaker/expected/SVDmaker0.pm                    0.03    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest-0.01.html               0.03    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest.ppd                     0.03    2003/08/04 unchanged
@@ -4402,11 +4232,11 @@ Title Page
      t/ExtUtils/SVDmaker/expected/SVDtest0B.pm                    0.05    2004/05/11 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest0B.t                     0.05    2004/05/11 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest2-0.01.html              0.03    2003/08/04 unchanged
-     t/ExtUtils/SVDmaker/expected/SVDtest2.pm                     0.05    2004/05/13 revised 0.04
+     t/ExtUtils/SVDmaker/expected/SVDtest2.pm                     0.05    2004/05/13 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest2.ppd                    0.04    2004/05/11 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest2.t                      0.04    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest3-0.02.html              0.03    2003/08/04 unchanged
-     t/ExtUtils/SVDmaker/expected/SVDtest3.pm                     0.06    2004/05/13 revised 0.05
+     t/ExtUtils/SVDmaker/expected/SVDtest3.pm                     0.06    2004/05/13 unchanged
      t/ExtUtils/SVDmaker/expected/SVDtest3.ppd                    0.03    2003/08/04 unchanged
      t/ExtUtils/SVDmaker/expected/Test/Tech.pm                    0.05    2004/05/11 unchanged
      t/ExtUtils/SVDmaker/expected/Data/Secs2.pm                   0.05    2004/05/11 unchanged
@@ -4477,8 +4307,12 @@ Title Page
         SWitch from "DataPort::Maker" to "File::Maker". Eliminated the use
         of "File::Data" and "File::TestPath"
 
-    ExtUtils::SVDmaker-0.05
+    ExtUtils::SVDmaker-0.06
         Verbatim NAME section from template. Replaced.
+
+    ExtUtils::SVDmaker-0.07
+        Escape the SVD template POD '=' commands so that they do not confuse
+        the CPAN to which is the real POD.
 
   3.4 Adaptation data.
 
@@ -4513,12 +4347,12 @@ Title Page
           http://www.softwarediamonds/packages/
           http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-        Right click on 'ExtUtils-SVDmaker-0.06.tar.gz' and download to a
+        Right click on 'ExtUtils-SVDmaker-0.07.tar.gz' and download to a
         temporary installation directory. Enter the following where $make is
         'nmake' for microsoft windows; otherwise 'make'.
 
-         gunzip ExtUtils-SVDmaker-0.06.tar.gz
-         tar -xf ExtUtils-SVDmaker-0.06.tar
+         gunzip ExtUtils-SVDmaker-0.07.tar.gz
+         tar -xf ExtUtils-SVDmaker-0.07.tar
          perl Makefile.PL
          $make test
          $make install
@@ -4537,7 +4371,7 @@ Title Page
         conflict or just do not like the name.
 
     Prerequistes.
-         'Archive::TarGzip' => '0',
+         'Archive::TarGzip' => '0.03',
          'File::AnySpec' => '1.13',
          'File::Maker' => '0.03',
          'File::Package' => '1.16',
@@ -4548,6 +4382,7 @@ Title Page
          'Text::Scrub' => '1.13',
          'Tie::Form' => '0.01',
          'Tie::Layers' => '0.04',
+         'Tie::Gzip' => '1.15',
 
     Security, privacy, or safety precautions.
         None.

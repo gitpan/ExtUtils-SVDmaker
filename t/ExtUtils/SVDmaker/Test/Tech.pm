@@ -11,12 +11,12 @@ use warnings::register;
 
 use Test ();   # do not import the "Test" subroutines
 use Data::Secs2 1.22 qw(stringify);
-use Data::SecsPack 0.06;
+use Data::Str2Num 0.05;
 use Data::Startup 0.03;
 
 use vars qw($VERSION $DATE $FILE);
-$VERSION = '1.25';
-$DATE = '2004/05/13';
+$VERSION = '1.26';
+$DATE = '2004/05/22';
 $FILE = __FILE__;
 
 use vars qw(@ISA @EXPORT_OK);
@@ -343,8 +343,8 @@ EOF
     print $Test::TESTOUT <<"EOF";
 # Test::Tech     : $VERSION
 # Data::Secs2    : $Data::Secs2::VERSION
-# Data::SecsPack : $Data::SecsPack::VERSION
 # Data::Startup  : $Data::Startup::VERSION
+# Data::Str2Num  : $Data::Str2Num::VERSION
 # Number of tests: $self->{num_tests}
 # =cut 
 EOF

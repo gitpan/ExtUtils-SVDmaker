@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE);
-$VERSION = '1.08';
-$DATE = '2004/05/13';
+$VERSION = '1.09';
+$DATE = '2004/05/22';
 
 ######
 # Distribution Program Modules
@@ -625,11 +625,11 @@ sub default_template
 {
     << 'EOF';
 
-=head1 NAME
+\=head1 NAME
 
 ${TITLE}
 
-=head1 Title Page
+\=head1 Title Page
 
  Software Version Description
 
@@ -651,33 +651,33 @@ ${TITLE}
 
  Classification: ${CLASSIFICATION}
 
-=head1 1.0 SCOPE
+\=head1 1.0 SCOPE
 
 This paragraph identifies and provides an overview
 of the released files.
 
-=head2 1.1 Identification
+\=head2 1.1 Identification
 
 This release,
 identified in L<3.2|/3.2 Inventory of software contents>,
 is a collection of Perl modules that
 extend the capabilities of the Perl language.
 
-=head2 1.2 System overview
+\=head2 1.2 System overview
 
 ${CAPABILITIES}
 
-=head2 1.3 Document overview.
+\=head2 1.3 Document overview.
 
 ${DOCUMENT_OVERVIEW}
 
-=head1 3.0 VERSION DESCRIPTION
+\=head1 3.0 VERSION DESCRIPTION
 
 All file specifications in this SVD
 use the ${SVD_FSPEC} operating
 system file specification.
 
-=head2 3.1 Inventory of materials released.
+\=head2 3.1 Inventory of materials released.
 
 This document releases the file 
 
@@ -690,34 +690,34 @@ ${REPOSITORY}
 Restrictions regarding duplication and license provisions
 are as follows:
 
-=over 4
+\=over 4
 
-=item Copyright.
+\=item Copyright.
 
 ${COPYRIGHT}
 
-=item Copyright holder contact.
+\=item Copyright holder contact.
 
  ${SUPPORT}
 
-=item License.
+\=item License.
 
 ${LICENSE}
 
-=back
+\=back
 
-=head2 3.2 Inventory of software contents
+\=head2 3.2 Inventory of software contents
 
 The content of the released, compressed, archieve file,
 consists of the following files:
 
 ${DIST_INVENTORY}
 
-=head2 3.3 Changes
+\=head2 3.3 Changes
 
 ${RESTRUCTURE_CHANGES}${CHANGES}
 
-=head2 3.4 Adaptation data.
+\=head2 3.4 Adaptation data.
 
 This installation requires that the installation site
 has the Perl programming language installed.
@@ -725,62 +725,62 @@ There are no other additional requirements or tailoring needed of
 configurations files, adaptation data or other software needed for this
 installation particular to any installation site.
 
-=head2 3.5 Related documents.
+\=head2 3.5 Related documents.
 
 There are no related documents needed for the installation and
 test of this release.
 
-=head2 3.6 Installation instructions.
+\=head2 3.6 Installation instructions.
 
 Instructions for installation, installation tests
 and installation support are as follows:
 
-=over 4
+\=over 4
 
-=item Installation Instructions.
+\=item Installation Instructions.
 
 ${INSTALLATION}
 
-=item Prerequistes.
+\=item Prerequistes.
 
 ${PREREQ_PM_TEXT}
 
-=item Security, privacy, or safety precautions.
+\=item Security, privacy, or safety precautions.
 
 None.
 
-=item Installation Tests.
+\=item Installation Tests.
 
 Most Perl installation software will run the following test script(s)
 as part of the installation:
 
 ${TEST_INVENTORY}
 
-=item Installation support.
+\=item Installation support.
 
 If there are installation problems or questions with the installation
 contact
 
  ${SUPPORT}
 
-=back
+\=back
 
-=head2 3.7 Possible problems and known errors
+\=head2 3.7 Possible problems and known errors
 
 ${PROBLEMS}
 
-=head1 4.0 NOTES
+\=head1 4.0 NOTES
 
 ${NOTES}
 
-=head1 2.0 SEE ALSO
+\=head1 2.0 SEE ALSO
 
 ${SEE_ALSO}
 
-=for html
+\=for html
 ${HTML}
 
-=cut
+\=cut
 
 EOF
 
@@ -799,9 +799,6 @@ sub get_date
    sprintf( "%04d/%02d/%02d", @d[0,1,2]);
 
 }
-
-
-
 
 
 ######
@@ -2565,7 +2562,7 @@ follow on the next lines as comments. For example,
  #__DATA__
 
  #DISTNAME: SVDtest1^
- #VERSION:1.08^  
+ #VERSION:1.09^     
  #REPOSITORY_DIR: packages^
  #FREEZE: 0^
 
@@ -5835,18 +5832,15 @@ ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =head1 SEE ALSO
 
-The 2167A bundle functional program modules that contain
-an end-user interface are as follows:
-
 =over 4 
 
 =item L<Test::STDmaker|Test::STDmaker>
 
 =item L<ExtUtils::SVDmaker|ExtUtils::SVDmaker>
 
-=item L<DataPort::FileType::FormDB|DataPort::FileType::FormDB>
+=item L<Tie::Form|Tie::Form>
 
-=item L<DataPort::DataFile|DataPort::DataFile>
+=item L<Tie::Layers|Tie::Layers>
 
 =item L<Test::Tech|Test::Tech> 
 
@@ -5854,99 +5848,15 @@ an end-user interface are as follows:
 
 =item L<Test::STD::TestUtil|Test::STD::TestUtil>
 
-=back
-
-The 2167A bundle design program modules that support
-the functional program modules are so specific
-that they have value only for support of the
-function program modules are as follows:
-
-=over 4
-
-=item L<Test::STD::Check|Test::STD::Check>
-
-=item L<Test::STD::FileGen|Test::STD::FileGen>
-
-=item L<Test::STD::STD2167|Test::STD::STD2167>
-
-=item L<Test::STD::STDgen|Test::STD::STDgen>
-
-=item L<Test::STDtype::Demo|Test::STDtype::Demo>
-
-=item L<Test::STDtype::STD|Test::STDtype::STD>
-
-=item L<Test::STDtype::Verify|Test::STDtype::Verify>
-
-=back
-
-The L<ExtUtils::SVDmaker|ExtUtils::SVDmaker> and 
-L<Test::STDmaker|Test::STDmaker> 
-automate of some of the US DOD
-2167A Software Development Standard as established
-by the following US DOD documents:
-
-=over 4
-
 =item L<US DOD Software Development Standard|Docs::US_DOD::STD2167A>
 
 =item L<US DOD Specification Practices|Docs::US_DOD::STD490A>
-
-=item L<Computer Operation Manual (COM) DID|Docs::US_DOD::COM>
-
-=item L<Computer Programming Manual (CPM) DID)|Docs::US_DOD::CPM>
-
-=item L<Computer Resources Integrated Support Document (CRISD) DID|Docs::US_DOD::CRISD>
-
-=item L<Computer System Operator's Manual (CSOM) DID|Docs::US_DOD::CSOM>
-
-=item L<Database Design Description (DBDD) DID|Docs::US_DOD::DBDD>
-
-=item L<Engineering Change Proposal (ECP) DID|Docs::US_DOD::ECP>
-
-=item L<Firmware support Manual (FSM) DID|Docs::US_DOD::FSM>
-
-=item L<Interface Design Document (IDD) DID|Docs::US_DOD::IDD>
-
-=item L<Interface Requirements Specification (IRS) DID|Docs::US_DOD::IRS>
-
-=item L<Operation Concept Description (OCD) DID|Docs::US_DOD::OCD>
-
-=item L<Specification Change Notice (SCN) DID|Docs::US_DOD::SCN>
-
-=item L<Software Design Specification (SDD) DID|Docs::US_DOD::SDD>
-
-=item L<Software Development Plan (SDP) DID|Docs::US_DOD::SDP> 
-
-=item L<Software Input and Output Manual (SIOM) DID|Docs::US_DOD::SIOM>
-
-=item L<Software Installation Plan (SIP) DID|Docs::US_DOD::SIP>
-
-=item L<Software Programmer's Manual (SPM) DID|Docs::US_DOD::SPM>
-
-=item L<Software Product Specification (SPS) DID|Docs::US_DOD::SPS>
-
-=item L<Software Requirements Specification (SRS) DID|Docs::US_DOD::SRS>
-
-=item L<System or Segment Design Document (SSDD) DID|Docs::US_DOD::SSDD>
-
-=item L<System or Subsystem Specification (SSS) DID|Docs::US_DOD::SSS>
-
-=item L<Software Test Description (STD) DID|Docs::US_DOD::STD>
-
-=item L<Software Test Plan (STP) DID|Docs::US_DOD::STP>
-
-=item L<Software Test Report (STR) DID|Docs::US_DOD::STR>
-
-=item L<Software Transition Plan (STrP) DID|Docs::US_DOD::STrP>
-
-=item L<Software User Manual (SUM) DID|Docs::US_DOD::SUM>
 
 =item L<Software Version Description (SVD) DID|Docs::US_DOD::SVD>
 
 =item L<Version Description Document (VDD) DID|Docs::US_DOD::VDD>
 
 =back
-
 
 =cut
 

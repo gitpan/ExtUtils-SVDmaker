@@ -23,11 +23,11 @@ my $tests = join ' ',unix2os('t/ExtUtils/SVDmaker/SVDmaker.t');
 WriteMakefile(
     NAME => 'ExtUtils::SVDmaker',
     DISTNAME => 'ExtUtils-SVDmaker',
-    VERSION  => '0.06',
+    VERSION  => '0.07',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},
-    PREREQ_PM => {'Archive::TarGzip' => '0',
+    PREREQ_PM => {'Archive::TarGzip' => '0.03',
                   'File::AnySpec' => '1.13',
                   'File::Maker' => '0.03',
                   'File::Package' => '1.16',
@@ -37,7 +37,8 @@ WriteMakefile(
                   'Text::Column' => '0',
                   'Text::Scrub' => '1.13',
                   'Tie::Form' => '0.01',
-                  'Tie::Layers' => '0.04',},
+                  'Tie::Layers' => '0.04',
+                  'Tie::Gzip' => '1.15',},
     
 
     ($] >= 5.005 ?     

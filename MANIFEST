@@ -10,7 +10,7 @@ t/ExtUtils/SVDmaker/lib/SVDtest1.pm
 t/ExtUtils/SVDmaker/vmake.pl
 t/ExtUtils/SVDmaker/Test/Tech.pm
 t/ExtUtils/SVDmaker/Data/Secs2.pm
-t/ExtUtils/SVDmaker/Data/SecsPack.pm
+t/ExtUtils/SVDmaker/Data/Str2Num.pm
 t/ExtUtils/SVDmaker/Data/Startup.pm
 t/ExtUtils/SVDmaker/expected/Makefile
 t/ExtUtils/SVDmaker/expected/Makefile2.PL

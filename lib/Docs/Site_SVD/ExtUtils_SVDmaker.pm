@@ -10,26 +10,26 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.06';
-$DATE = '2004/05/13';
+$VERSION = '0.07';
+$DATE = '2004/05/22';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm' => [qw(0.06 2004/05/13), 'revised 0.05'],
-    'MANIFEST' => [qw(0.06 2004/05/13), 'generated, replaces 0.05'],
-    'Makefile.PL' => [qw(0.06 2004/05/13), 'generated, replaces 0.05'],
-    'README' => [qw(0.06 2004/05/13), 'generated, replaces 0.05'],
-    'lib/ExtUtils/SVDmaker.pm' => [qw(1.08 2004/05/13), 'revised 1.07'],
+    'lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm' => [qw(0.07 2004/05/22), 'revised 0.06'],
+    'MANIFEST' => [qw(0.07 2004/05/22), 'generated, replaces 0.06'],
+    'Makefile.PL' => [qw(0.07 2004/05/22), 'generated, replaces 0.06'],
+    'README' => [qw(0.07 2004/05/22), 'generated, replaces 0.06'],
+    'lib/ExtUtils/SVDmaker.pm' => [qw(1.09 2004/05/22), 'revised 1.08'],
     't/ExtUtils/SVDmaker/SVDmaker.d' => [qw(0.01 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/SVDmaker.pm' => [qw(0.01 2004/05/11), 'unchanged'],
-    't/ExtUtils/SVDmaker/SVDmaker.t' => [qw(0.06 2004/05/13), 'revised 0.05'],
-    't/ExtUtils/SVDmaker/lib/SVDtest1.pm' => [qw(0.03 2004/05/13), 'revised 0.02'],
-    't/ExtUtils/SVDmaker/vmake.pl' => [qw(1.04 2004/05/13), 'unchanged'],
-    't/ExtUtils/SVDmaker/Test/Tech.pm' => [qw(1.25 2004/05/13), 'revised 1.24'],
-    't/ExtUtils/SVDmaker/Data/Secs2.pm' => [qw(1.23 2004/05/13), 'revised 1.22'],
-    't/ExtUtils/SVDmaker/Data/SecsPack.pm' => [qw(0.08 2004/05/13), 'revised 0.07'],
-    't/ExtUtils/SVDmaker/Data/Startup.pm' => [qw(0.06 2004/05/13), 'unchanged'],
+    't/ExtUtils/SVDmaker/SVDmaker.t' => [qw(0.06 2004/05/13), 'unchanged'],
+    't/ExtUtils/SVDmaker/lib/SVDtest1.pm' => [qw(0.03 2004/05/22), 'revised 0.02'],
+    't/ExtUtils/SVDmaker/vmake.pl' => [qw(1.04 2004/05/22), 'unchanged'],
+    't/ExtUtils/SVDmaker/Test/Tech.pm' => [qw(1.26 2004/05/22), 'revised 1.25'],
+    't/ExtUtils/SVDmaker/Data/Secs2.pm' => [qw(1.26 2004/05/22), 'revised 1.23'],
+    't/ExtUtils/SVDmaker/Data/Str2Num.pm' => [qw(0.08 2004/05/22), 'new'],
+    't/ExtUtils/SVDmaker/Data/Startup.pm' => [qw(0.07 2004/05/22), 'revised 0.06'],
     't/ExtUtils/SVDmaker/expected/Makefile' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile2.PL' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Makefile3.PL' => [qw(0.03 2003/08/04), 'unchanged'],
@@ -37,8 +37,8 @@ use vars qw(%INVENTORY);
     't/ExtUtils/SVDmaker/expected/module0A.pm' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/module0B.pm' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/module2.pm' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/README2' => [qw(0.05 2004/05/13), 'revised 0.04'],
-    't/ExtUtils/SVDmaker/expected/README3' => [qw(0.06 2004/05/13), 'revised 0.05'],
+    't/ExtUtils/SVDmaker/expected/README2' => [qw(0.05 2004/05/13), 'unchanged'],
+    't/ExtUtils/SVDmaker/expected/README3' => [qw(0.06 2004/05/13), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDmaker0.pm' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest-0.01.html' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest.ppd' => [qw(0.03 2003/08/04), 'unchanged'],
@@ -47,11 +47,11 @@ use vars qw(%INVENTORY);
     't/ExtUtils/SVDmaker/expected/SVDtest0B.pm' => [qw(0.05 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest0B.t' => [qw(0.05 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest2-0.01.html' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/SVDtest2.pm' => [qw(0.05 2004/05/13), 'revised 0.04'],
+    't/ExtUtils/SVDmaker/expected/SVDtest2.pm' => [qw(0.05 2004/05/13), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest2.ppd' => [qw(0.04 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest2.t' => [qw(0.04 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest3-0.02.html' => [qw(0.03 2003/08/04), 'unchanged'],
-    't/ExtUtils/SVDmaker/expected/SVDtest3.pm' => [qw(0.06 2004/05/13), 'revised 0.05'],
+    't/ExtUtils/SVDmaker/expected/SVDtest3.pm' => [qw(0.06 2004/05/13), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/SVDtest3.ppd' => [qw(0.03 2003/08/04), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Test/Tech.pm' => [qw(0.05 2004/05/11), 'unchanged'],
     't/ExtUtils/SVDmaker/expected/Data/Secs2.pm' => [qw(0.05 2004/05/11), 'unchanged'],
@@ -88,11 +88,11 @@ Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
 
  Docs::Site_SVD::ExtUtils_SVDmaker - Automate creating CPAN distributions
 
- Revision: E
+ Revision: F
 
- Version: 0.06
+ Version: 0.07
 
- Date: 2004/05/13
+ Date: 2004/05/22
 
  Prepared for: General Public 
 
@@ -188,7 +188,7 @@ a text database in the Data::Port::FileTYpe::FormDB format.
 
 =head2 1.3 Document overview.
 
-This document releases ExtUtils::SVDmaker version 0.06
+This document releases ExtUtils::SVDmaker version 0.07
 providing description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -203,7 +203,7 @@ system file specification.
 
 This document releases the file 
 
- ExtUtils-SVDmaker-0.06.tar.gz
+ ExtUtils-SVDmaker-0.07.tar.gz
 
 found at the following repository(s):
 
@@ -298,20 +298,20 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.06    2004/05/13 revised 0.05
- MANIFEST                                                     0.06    2004/05/13 generated, replaces 0.05
- Makefile.PL                                                  0.06    2004/05/13 generated, replaces 0.05
- README                                                       0.06    2004/05/13 generated, replaces 0.05
- lib/ExtUtils/SVDmaker.pm                                     1.08    2004/05/13 revised 1.07
+ lib/Docs/Site_SVD/ExtUtils_SVDmaker.pm                       0.07    2004/05/22 revised 0.06
+ MANIFEST                                                     0.07    2004/05/22 generated, replaces 0.06
+ Makefile.PL                                                  0.07    2004/05/22 generated, replaces 0.06
+ README                                                       0.07    2004/05/22 generated, replaces 0.06
+ lib/ExtUtils/SVDmaker.pm                                     1.09    2004/05/22 revised 1.08
  t/ExtUtils/SVDmaker/SVDmaker.d                               0.01    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/SVDmaker.pm                              0.01    2004/05/11 unchanged
- t/ExtUtils/SVDmaker/SVDmaker.t                               0.06    2004/05/13 revised 0.05
- t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/13 revised 0.02
- t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/13 unchanged
- t/ExtUtils/SVDmaker/Test/Tech.pm                             1.25    2004/05/13 revised 1.24
- t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.23    2004/05/13 revised 1.22
- t/ExtUtils/SVDmaker/Data/SecsPack.pm                         0.08    2004/05/13 revised 0.07
- t/ExtUtils/SVDmaker/Data/Startup.pm                          0.06    2004/05/13 unchanged
+ t/ExtUtils/SVDmaker/SVDmaker.t                               0.06    2004/05/13 unchanged
+ t/ExtUtils/SVDmaker/lib/SVDtest1.pm                          0.03    2004/05/22 revised 0.02
+ t/ExtUtils/SVDmaker/vmake.pl                                 1.04    2004/05/22 unchanged
+ t/ExtUtils/SVDmaker/Test/Tech.pm                             1.26    2004/05/22 revised 1.25
+ t/ExtUtils/SVDmaker/Data/Secs2.pm                            1.26    2004/05/22 revised 1.23
+ t/ExtUtils/SVDmaker/Data/Str2Num.pm                          0.08    2004/05/22 new
+ t/ExtUtils/SVDmaker/Data/Startup.pm                          0.07    2004/05/22 revised 0.06
  t/ExtUtils/SVDmaker/expected/Makefile                        0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile2.PL                    0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/Makefile3.PL                    0.03    2003/08/04 unchanged
@@ -319,8 +319,8 @@ consists of the following files:
  t/ExtUtils/SVDmaker/expected/module0A.pm                     0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/module0B.pm                     0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/module2.pm                      0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/README2                         0.05    2004/05/13 revised 0.04
- t/ExtUtils/SVDmaker/expected/README3                         0.06    2004/05/13 revised 0.05
+ t/ExtUtils/SVDmaker/expected/README2                         0.05    2004/05/13 unchanged
+ t/ExtUtils/SVDmaker/expected/README3                         0.06    2004/05/13 unchanged
  t/ExtUtils/SVDmaker/expected/SVDmaker0.pm                    0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest-0.01.html               0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest.ppd                     0.03    2003/08/04 unchanged
@@ -329,11 +329,11 @@ consists of the following files:
  t/ExtUtils/SVDmaker/expected/SVDtest0B.pm                    0.05    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest0B.t                     0.05    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest2-0.01.html              0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/SVDtest2.pm                     0.05    2004/05/13 revised 0.04
+ t/ExtUtils/SVDmaker/expected/SVDtest2.pm                     0.05    2004/05/13 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest2.ppd                    0.04    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest2.t                      0.04    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest3-0.02.html              0.03    2003/08/04 unchanged
- t/ExtUtils/SVDmaker/expected/SVDtest3.pm                     0.06    2004/05/13 revised 0.05
+ t/ExtUtils/SVDmaker/expected/SVDtest3.pm                     0.06    2004/05/13 unchanged
  t/ExtUtils/SVDmaker/expected/SVDtest3.ppd                    0.03    2003/08/04 unchanged
  t/ExtUtils/SVDmaker/expected/Test/Tech.pm                    0.05    2004/05/11 unchanged
  t/ExtUtils/SVDmaker/expected/Data/Secs2.pm                   0.05    2004/05/11 unchanged
@@ -412,10 +412,14 @@ due to using program modules that that are not part of the distributions.
 SWitch from C<DataPort::Maker> to C<File::Maker>. Eliminated the use
 of C<File::Data> and C<File::TestPath>
 
-=item ExtUtils::SVDmaker-0.05
+=item ExtUtils::SVDmaker-0.06
 
 Verbatim NAME section from template. Replaced.
 
+=item ExtUtils::SVDmaker-0.07
+
+Escape the SVD template POD '=' commands so that they do not confuse
+the CPAN to which is the real POD.
 
 =back
 
@@ -455,13 +459,13 @@ Enter one of the following repositories in a web browser:
   http://www.softwarediamonds/packages/
   http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-Right click on 'ExtUtils-SVDmaker-0.06.tar.gz' and download to a temporary
+Right click on 'ExtUtils-SVDmaker-0.07.tar.gz' and download to a temporary
 installation directory.
 Enter the following where $make is 'nmake' for microsoft
 windows; otherwise 'make'.
 
- gunzip ExtUtils-SVDmaker-0.06.tar.gz
- tar -xf ExtUtils-SVDmaker-0.06.tar
+ gunzip ExtUtils-SVDmaker-0.07.tar.gz
+ tar -xf ExtUtils-SVDmaker-0.07.tar
  perl Makefile.PL
  $make test
  $make install
@@ -483,7 +487,7 @@ name conflict or just do not like the name.
 
 =item Prerequistes.
 
- 'Archive::TarGzip' => '0',
+ 'Archive::TarGzip' => '0.03',
  'File::AnySpec' => '1.13',
  'File::Maker' => '0.03',
  'File::Package' => '1.16',
@@ -494,6 +498,7 @@ name conflict or just do not like the name.
  'Text::Scrub' => '1.13',
  'Tie::Form' => '0.01',
  'Tie::Layers' => '0.04',
+ 'Tie::Gzip' => '1.15',
 
 
 =item Security, privacy, or safety precautions.
@@ -619,11 +624,11 @@ United States
 __DATA__
 
 DISTNAME: ExtUtils-SVDmaker^
-VERSION : 0.06^
+VERSION : 0.07^
 FREEZE: 1^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.05^
-REVISION: E^
+PREVIOUS_RELEASE: 0.06^
+REVISION: F^
 
 AUTHOR  : SoftwareDiamonds.com E<lt> support@SoftwareDiamonds.com E<gt>^
 ABSTRACT: 
@@ -659,7 +664,7 @@ t/ExtUtils/SVDmaker/lib/*
 bin/vmake.pl => t/ExtUtils/SVDmaker/vmake.pl
 lib/Test/Tech.pm => t/ExtUtils/SVDmaker/Test/Tech.pm
 lib/Data/Secs2.pm => t/ExtUtils/SVDmaker/Data/Secs2.pm
-lib/Data/SecsPack.pm => t/ExtUtils/SVDmaker/Data/SecsPack.pm
+lib/Data/Str2Num.pm => t/ExtUtils/SVDmaker/Data/Str2Num.pm
 lib/Data/Startup.pm => t/ExtUtils/SVDmaker/Data/Startup.pm
 ^
 
@@ -671,7 +676,7 @@ t/ExtUtils/SVDmaker/expected/File/*
 ^
 
 PREREQ_PM:
-'Archive::TarGzip' => '0',
+'Archive::TarGzip' => '0.03',
 'File::AnySpec' => '1.13',
 'File::Maker' => '0.03',
 'File::Package' => '1.16',
@@ -682,6 +687,7 @@ PREREQ_PM:
 'Text::Scrub' => '1.13',
 'Tie::Form' => '0.01',
 'Tie::Layers' => '0.04',
+'Tie::Gzip' => '1.15',
 ^
 
 README_PODS: lib/ExtUtils/SVDmaker.pm^
@@ -757,10 +763,14 @@ due to using program modules that that are not part of the distributions.
 SWitch from C<DataPort::Maker> to C<File::Maker>. Eliminated the use
 of C<File::Data> and C<File::TestPath>
 
-\=item ExtUtils::SVDmaker-0.05
+\=item ExtUtils::SVDmaker-0.06
 
 Verbatim NAME section from template. Replaced.
 
+\=item ExtUtils::SVDmaker-0.07
+
+Escape the SVD template POD '=' commands so that they do not confuse
+the CPAN to which is the real POD.
 
 \=back
 ^
